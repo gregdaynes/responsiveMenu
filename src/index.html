@@ -1,11 +1,11 @@
 <!doctype>
 <html>
 <head>
-  <link rel="stylesheet" href="githubModuleRepo.css" type="text/css" />
+  <link rel="stylesheet" href="responsiveMenu.css" type="text/css" />
 
   <!-- build:js githubModuleRepo.js -->
   <script src="devUtility.js"></script>
-  <script src="githubModuleRepo.js"></script>
+  <script src="responsiveMenu.js"></script>
   <!-- /build -->
 
   <!-- build:remove -->
@@ -13,6 +13,30 @@
   <!-- /build -->
 </head>
 <body>
+
+  <nav class="responsive-menu">
+    <ul class="responsive-menu__list">
+      <li class="responsive-menu__list__item  responsive-menu__list__item--active"><a class="responsive-menu__list__item__link" href="#">Menu Item</a></li>
+      <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a></li>
+      <li class="responsive-menu__list__item  responsive-menu__list__item--parent"><a class="responsive-menu__list__item__link" href="#">Menu Item</a>
+        <ul class="responsive-menu__list">
+          <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a></li>
+        </ul>
+      </li>
+      <li class="responsive-menu__list__item  responsive-menu__list__item--parent"><a class="responsive-menu__list__item__link" href="#">Menu Item</a>
+        <ul class="responsive-menu__list">
+          <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a>
+            <li class="responsive-menu__list__item  responsive-menu__list__item--parent"><a class="responsive-menu__list__item__link" href="#">Menu Item</a>
+              <ul class="responsive-menu__list">
+                <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a></li>
+              </ul>
+            </li>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+  </nav>
 
 </body>
 </html>
