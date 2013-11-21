@@ -1,5 +1,5 @@
 # Global Variables
-menuParents = document.getElementsByClassName('is-parent')
+menuParents = document.getElementsByClassName('responsive-menu__list__item--parent')
 
 # getParent
 # Recursive selector
@@ -8,8 +8,8 @@ this.getParent = (el, tag) ->
     el = el.parentNode
 
     if el.tagName is tag
-      if el.classList.contains('is-parent')
-        el.classList.add('is-expanded')
+      if el.classList.contains('responsive-menu__list__item--parent')
+        el.classList.add('responsive-menu__list__item--parent-expanded')
 
   return null
 
@@ -26,15 +26,15 @@ this.focusIn = (event) ->
   # Focused Element
   element = event.srcElement
 
-  if element.parentNode.classList.contains('is-expanded')
+  if element.parentNode.classList.contains('responsive-menu__list__item--parent-expanded')
     #console.log('has is-expanded')
-    element.parentNode.classList.remove('is-expanded')
+    element.parentNode.classList.remove('responsive-menu__list__item--parent-expanded')
     return
 
   # find all expanded menus
-  for expanded in menuParents when expanded.classList.contains('is-expanded')
+  for expanded in menuParents when expanded.classList.contains('responsive-menu__list__item--parent-expanded')
     # remove expanded class
-    expanded.classList.remove('is-expanded')
+    expanded.classList.remove('responsive-menu__list__item--parent-expanded')
 
   # send to recursive expander
   this.getParent(element, "LI")

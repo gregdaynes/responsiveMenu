@@ -14,29 +14,61 @@
 </head>
 <body>
 
+
+  <!-- Menu Collapse Handler -->
+  <input type="checkbox" name="responsive-menu__handler" id="responsive-menu__handler" class="responsive-menu__handler" />
+  <label for="responsive-menu__handler" class="responsive-menu__label" href="#" aria-label="Toggle Navigation">
+    <span class="lines"></span>
+  </label>
+
   <nav class="responsive-menu">
     <ul class="responsive-menu__list">
       <li class="responsive-menu__list__item  responsive-menu__list__item--active"><a class="responsive-menu__list__item__link" href="#">Menu Item</a></li>
       <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a></li>
+      <li class="responsive-menu__list__item  responsive-menu__list__item--active  responsive-menu__list__item--parent"><a class="responsive-menu__list__item__link" href="#">Menu Item</a>
+        <ul class="responsive-menu__list">
+          <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a></li>
+          <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a></li>
+          <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a></li>
+          <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a>
+          </li>
+
+          <li class="responsive-menu__list__item  responsive-menu__list__item--parent"><a class="responsive-menu__list__item__link" href="#">Menu Item</a>
+            <ul class="responsive-menu__list">
+              <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a></li>
+              <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a></li>
+              <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a></li>
+              <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
       <li class="responsive-menu__list__item  responsive-menu__list__item--parent"><a class="responsive-menu__list__item__link" href="#">Menu Item</a>
         <ul class="responsive-menu__list">
+          <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a></li>
+          <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a></li>
+          <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a></li>
           <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a></li>
         </ul>
       </li>
       <li class="responsive-menu__list__item  responsive-menu__list__item--parent"><a class="responsive-menu__list__item__link" href="#">Menu Item</a>
         <ul class="responsive-menu__list">
+          <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a></li>
           <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a>
             <li class="responsive-menu__list__item  responsive-menu__list__item--parent"><a class="responsive-menu__list__item__link" href="#">Menu Item</a>
               <ul class="responsive-menu__list">
+                <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a></li>
+                <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a></li>
                 <li class="responsive-menu__list__item"><a class="responsive-menu__list__item__link" href="#">Menu Item</a></li>
               </ul>
             </li>
           </li>
         </ul>
       </li>
-    </ul>
 
+    </ul>
   </nav>
+
 
 </body>
 </html>

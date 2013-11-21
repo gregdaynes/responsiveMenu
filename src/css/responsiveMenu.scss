@@ -1,32 +1,27 @@
 /*! ------------------------------------------------------------------------ !*\
     Created By: Gregory Daynes
-
-    based on BEM/SMACSS principals
-
-    mixins    some taken from Malarky/Rock Hammer, H5BP
-    base      H5BP, Malarky/Rock Hammer, Around the Web
-    normalize v2.1.2 | MIT License | git.io/normalize
-    grids   https://github.com/csswizardry/csswizardry-grids
 \*! ------------------------------------------------------------------------ !*/
 
-// Imports
-// -------
-@import url(http://fonts.googleapis.com/css?family=Cinzel);
+
+// !Imports
+// --------
 
 // Tools
-// -----
 @import "_utilities";
 @import "_functions";
 @import "_variables";
 @import "_extends";
 @import "_mixins";
-@import "_grid";
-@import "_normalize";
 
 // Styles
-// ------
 @import "base";
 
+
+
+
+
+// !Model
+// ------
 .responsive-menu {}
 .responsive-menu__list {}
 .responsive-menu__list__item {}
@@ -41,98 +36,101 @@
   .responsive-menu__list__item__link {}
 
 
+$primary: #f39c12;
+$primaryHighlight: #f1c40f;
+$secondary: #7f8c8d;
+$secondaryHighlight: #95a5a6;
+
+$translucent: rgba(255,255,255,0.3);
+
+$neutral: #7f8c8d;
+$lightNeutral: lighten(#7f8c8d, 10%);
+$darkNeutral: darken(#7f8c8d, 10%);
+
+$black: #000;
+$white: #fff;
+
+$gutter:       24px;
+$narrowGutter: 12px;
+$skinnyGutter: 6px;
+
+
+// !Small Screen
+// -------------
+
+// root
+.responsive-menu {
+  background-color: $secondary;
+}
+
+// remove list styling
 .responsive-menu__list {
   @extend %list-style-none;
 }
 
+// list > active item
 .responsive-menu__list__item--active
   .responsive-menu__list__item__link {
-    background-color: $primarycolor;
-    border-top-color: lighten($primarycolor, 10%);
-    border-bottom-color: darken($primarycolor, 10%);
-    padding-left: $horizontal-gutter;
+    background-color: $primary;
 }
 
+// list > active item :hover
+// list > active item :focus
 .responsive-menu__list__item--active
   .responsive-menu__list__item__link:hover,
 .responsive-menu__list__item--active
   .responsive-menu__list__item__link:focus {
-    text-decoration: underline;
-    background-color: $primarycolor;
+    background-color: $primary;
 }
 
-.responsive-menu__list__item--active
-  .responsive-menu__list__item__link:active {
-    border-top-color: darken($secondarycolor, 5);
-}
-
-.responsive-menu__list__item--parent-expanded {
-  background-color: lighten($secondarycolor, 5%);
-}
-
+// list > item
 .responsive-menu__list__item__link {
   text-decoration: none;
   text-transform: capitalize;
   display: block;
   color: $white;
-  background-color: $secondarycolor;
-  padding: ($vertical-gutter / 2) ($horizontal-gutter / 2);
-  border-bottom: 1px solid darken($secondarycolor, 10%);
-  border-top: 1px solid lighten($secondarycolor, 10%);
+  background-color: $secondary;
+  padding: $narrowGutter;
   transition: padding $transitionSpeed ease-in-out;
 }
 
+// list > item :hover
 .responsive-menu__list__item__link:hover {
-  background-color: lighten($secondarycolor, 5%);
+  background-color: $secondaryHighlight;
 }
 
+// list > item :focus
 .responsive-menu__list__item__link:focus {
   outline: none;
 }
 
-.responsive-menu__list__item
+// list > list
+.responsive-menu__list
   .responsive-menu__list {
-    background-color: darken($secondarycolor, 10%);
+    background-color: $secondary;
 }
 
-.responsive-menu__list__item
+// list > list > item :before
+.responsive-menu__list
   .responsive-menu__list
-    .responsive-menu__list__item
+    .responsive-menu__list__item__link:before {
+      content: '';
+      margin-right: $gutter;
+}
+
+// list > list > list > item :before
+.responsive-menu__list
+  .responsive-menu__list
+    .responsive-menu__list
       .responsive-menu__list__item__link:before {
-        content: '';
-        margin-right: $horizontal-gutter / 2;
+        margin-left: $gutter;
 }
 
-.responsive-menu__list__item
-  .responsive-menu__list
-    .responsive-menu__list__item
-      .responsive-menu__list__item__link:hover,
-.responsive-menu__list__item
-  .responsive-menu__list
-    .responsive-menu__list__item
-      .responsive-menu__list__item__link:focus {
-        border-top-color: lighten($secondarycolor, 15%);
-        background-color: lighten($secondarycolor, 10%)
-}
+// !Small Screen Positioning
+// -------------------------
 
-.responsive-menu__list__item
-  .responsive-menu__list
-    .responsive-menu__list__item
-      .responsive-menu__list__item__link:active {
-        background-color: darken($secondarycolor, 5%);
-        border-top-color: darken($secondarycolor, 5%);
-        border-bottom-color: lighten($secondarycolor, 5%);
-}
-
-.responsive-menu__list__item
-  .responsive-menu__list__item
-    .responsive-menu__list__item
-      .responsive-menu__list__item__link:before {
-        margin-left: $horizontal-gutter;
-}
-
-
-// positioning
+// list > parent item > list
+// list > parent item expanded > list > list
 .responsive-menu__list__item--parent
   .responsive-menu__list,
 .responsive-menu__list__item--parent-expanded
@@ -141,242 +139,168 @@
       height: 0;
       overflow: hidden;
 }
+
+// list > parent item expanded > list
+// list > parent item expanded > list > list
 .responsive-menu__list__item--parent-expanded
   .responsive-menu__list,
-.responsive-menu__list__item--parent-expanded
-  .responsive-menu__list
+.responsive-menu__list__item--parent:hover
+  .responsive-menu__list,
+.responsive-menu__list
+  .responsive-menu__list__item--parent-expanded
+    .responsive-menu__list,
+.responsive-menu__list
+  .responsive-menu__list__item--parent:hover
     .responsive-menu__list {
       height: auto;
 }
 
 
-/**
- * !Full-size
- *
- * full size navigation, tablet and large devices
- * dropdown support using hover, requires media-queries
- */
+// !Medium -> Large Screen
+// -----------------------
+// full size navigation, tablet and large devices
+// dropdown support using hover, requires media-queries
 @include breakpoint($bp4, min-width) {
 
-.responsive-menu__list__item {
-  display: table-cell;
-  width: 1%;
-  text-align: center;
-  vertical-align: middle;
-}
+  // root
+  .responsive-menu {
+    background-color: $translucent;
+  }
 
-.responsive-menu__list__item:hover,
-.responsive-menu__list__item:hover >
-  .responsive-menu__list__item__link,
-.responsive-menu__list__item--parent-expanded,
-.responsive-menu__list__item--parent-expanded >
-  .responsive-menu__list__item__link,
-.responsive-menu__list__item--active:hover >
-  .responsive-menu__list__item__link,
-.responsive-menu__list__item:focus,
-.responsive-menu__list__item:focus >
+  // list > item
+  .responsive-menu__list__item {
+    display: table-cell;
+    width: 1%;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+
+  // list > item
   .responsive-menu__list__item__link {
-    background-color: $lightneutralcolor;
-}
+    color: $black;
+    padding: 0 $narrowGutter;
+    background-color: transparent;
+  }
 
-.responsive-menu__list__item--active
-  .responsive-menu__list__item__link:focus {
-    background-color: $white;
-}
+  // list > item :hover
+  // list > item :hover > link
+  // list > item :focus
+  // list > item :expanded
+  .responsive-menu__list__item:hover
+    > .responsive-menu__list__item__link,
+  .responsive-menu__list__item__link:focus  {
+    background-color: $secondaryHighlight;
+  }
 
-.responsive-menu__list__item--active {}
-
-.responsive-menu__list__item--active
-  .responsive-menu__list__item__link {
-    background-color: $white;
-    color: $primarycolor;
-    padding-left: $horizontal-gutter / 2;
-}
-
-.responsive-menu__list__item__link {
-  border: none;
-  color: $black;
-  padding: 0 ($horizontal-gutter / 2);
-  text-shadow: 0 1px 0 $white;
-  background-color: $white;
-}
-
-.responsive-menu__list__item__link:hover {
-  background-color: $lightneutralcolor;
-}
-
-.responsive-menu__list
-  .responsive-menu__list {
-    background-color: $white;
-    border: 1px solid $neutralcolor;
-    box-shadow: 0 3px 7px rgba(0,0,0,0.2);
-    white-space: nowrap;
-}
-
-.responsive-menu__list
+  // list > list
   .responsive-menu__list
-    .responsive-menu__list__item {
-      background-color: $white;
-      display: block;
-      width: 100%;
-}
+    .responsive-menu__list {
+      background-color: $secondaryHighlight;
+  }
 
-.responsive-menu__list
+
+
+  // list > list > item :before
+  // list > list > list > item :before
   .responsive-menu__list
-    .responsive-menu__item--parent-expanded >
-      .responsive-menu__item__link,
-.responsive-menu__list
+    .responsive-menu__list
+      .responsive-menu__list__item__link:before,
   .responsive-menu__list
-    .responsive-menu__item:hover >
-      .responsive-menu__item__link,
-.responsive-menu__list
+    .responsive-menu__list
+      .responsive-menu__list
+        .responsive-menu__list__item__link:before {
+        content: '';
+        margin-right: 0;
+        margin-left: 0;
+  }
+
+  // list > list > item
   .responsive-menu__list
-    .responsive-menu__list__item >
-      .responsive-menu__list__item__link:focus {
-        background-color: $lightneutralcolor;
-}
+    .responsive-menu__list
+      .responsive-menu__list__item {
+        display: block;
+        width: 100%;
+        text-align: left;
+  }
 
-.responsive-menu__list
-  .responsive-menu__list
-    .responsive-menu__list__item__link {
-      border: none;
-      text-align: left;
-}
 
-.responsive-menu__list
-  .responsive-menu__list
-    .responsive-menu__list__item__link:before {
-      content: none;
-}
+  // !Medium -> Large Screen Positioning
+  // -----------------------------------
+  .responsive-menu__list__item--parent {
+    position:relative;
+  }
 
-.responsive-menu__list
-  .responsive-menu__list
-    .responsive-menu__list__item__link:hover {
-      background-color: $lightneutralcolor
-}
+  // list > parent item > list
+  .responsive-menu__list__item--parent
+    .responsive-menu__list {
+      height: auto;
+      overflow: visible;
+      position: absolute;
+      left: -999em;
+      z-index: 2;
+  }
 
-// positioning
-.responsive-menu__list__item--parent {
-  position:relative;
-}
-
-.responsive-menu__list__item--parent
-  .responsive-menu__list {
-    height: auto;
-    overflow: visible;
-    position: absolute;
-    left: -999em;
-    z-index: 2;
-}
-
-.responsive-menu__list__item--parent-expanded >
-  .responsive-menu__list,
-.responsive-menu__list__item:hover >
-  .responsive-menu__list {
-    left: auto;
-    top: 100%;
-    padding-left: 0;
-}
-
-.responsive-menu__list__item--parent-expanded
+  // list > parent item expanded > list
+  // list > item :hover > list
   .responsive-menu__list__item--parent-expanded >
     .responsive-menu__list,
-.responsive-menu__list__item:hover
   .responsive-menu__list__item:hover >
     .responsive-menu__list {
-      left: 100%;
-      top: -1px;
-}
+      top: 100%;
+      right: 0;
+      left: 0;
+      padding-left: 0;
+      width: 100%;
+  }
 
-// arrow decorations
-.responsive-menu__list
-  .responsive-menu__list:after,
-.responsive-menu__list
-  .responsive-menu__list:before {
-    bottom: 100%;
-  	border: solid transparent;
-  	content: " ";
-  	height: 0;
-  	width: 0;
-  	position: absolute;
-  	left: 5px;
-  	pointer-events: none;
-}
+  // list > parent item expanded > list > parent item expanded > list
+  // list > item :hover > list > item :hover > list
+  .responsive-menu__list__item--parent-expanded
+    .responsive-menu__list__item--parent-expanded >
+      .responsive-menu__list,
+  .responsive-menu__list__item:hover
+    .responsive-menu__list__item:hover >
+      .responsive-menu__list {
+        left: 100%;
+        top: 0;
+  }
 
-.responsive-menu__list
-  .responsive-menu__list:after {
-    border-bottom-color: $white;
-  	border-width: 5px;
-  	margin-left: 0;
-}
-
-.responsive-menu__list
-  .responsive-menu__list:before {
-    border-bottom-color: $neutralcolor;
-  	border-width: 6px;
-  	margin-left: -1px;
-}
-
-.responsive-menu__list
-  .responsive-menu__list
-    .responsive-menu__list:after,
-.responsive-menu__list
-  .responsive-menu__list
-    .responsive-menu__list:before {
-      left: (($horizontal-gutter / 2) - 2) * -1 ; // menu padding - border width
-    	border: solid transparent;
-    	content: " ";
-    	height: 0;
-    	width: 0;
-    	position: absolute;
-    	pointer-events: none;
-}
-
-.responsive-menu__list
-  .responsive-menu__list
-    .responsive-menu__list:after {
-      border-right-color: $white;
-    	border-width: 5px;
-    	top: 5px;
-}
-
-.responsive-menu__list
-  .responsive-menu__list
-    .responsive-menu__list:before {
-      border-right-color: $neutralcolor;
-    	border-width: 6px;
-    	top: 5px;
-    	margin-top: -1px;
-    	margin-left: -2px;
-}
+  .responsive-menu__list__item:last-of-type
+    .responsive-menu__list__item:hover
+      .responsive-menu__list,
+  .responsive-menu__list__item:last-of-type
+    .responsive-menu__list__item:focus
+      .responsive-menu__list {
+        right: 100%;
+        left: inherit
+  }
 
 
-// end full-size media query
-}
+} // end full-size media query
 
 
 
 
-
-/*
- * !Main Site Navigation - Utilities
- */
-.main-site-nav__handler {
+//
+// !Responsive Menu - Utilities
+// ----------------------------
+.responsive-menu__handler {
   display: none;
   }
-.main-site-nav__label {
+.responsive-menu__label {
   display: none;
   position: absolute;
   text-align: center;
   z-index: 100;
   }
-  .main-site-nav__label:hover {
+  .responsive-menu__label:hover {
     cursor: pointer;
     }
 
 @include breakpoint($bp4, max-width) {
 
-.main-site-nav {
+.responsive-menu {
   position: fixed;
   top: 0;
   left: -$navMenuWidth;
@@ -386,20 +310,22 @@
   overflow: scroll;
   }
 
-.main-site-nav,
-.main-site-nav__label {
+
+
+.responsive-menu,
+.responsive-menu__label {
   transition: left $transitionSpeed ease-in-out;
   }
 
-.main-site-nav__label {
+.responsive-menu__label {
   display: inline;
   }
 
-.main-site-nav__handler:checked ~ .main-site-nav {
+.responsive-menu__handler:checked ~ .responsive-menu {
   left: 0;
   }
 
-.main-site-nav__handler:checked ~ .main-site-nav__label {
+.responsive-menu__handler:checked ~ .responsive-menu__label {
   left: $navMenuWidth;
   }
 
@@ -407,24 +333,16 @@
 }
 
 
-// specific mods
-.main-site-nav {
-  background-color: $secondarycolor;
-  }
-@include breakpoint($bp4, min-width) {
-  // main-site-nav mod
-  .main-site-nav {
-    background-color: $white;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
-    }
-}
+
+
+
 
 
 //
 // DECORATIONS
-.main-site-nav__label {
+.responsive-menu__label {
   user-select: none;
-  background-color: $secondarycolor;
+  background-color: $secondary;
 
   @include proportional(10%);
 }
@@ -457,7 +375,7 @@
   &:after { top:   6px; }
 }
 
-.main-site-nav__handler:checked ~ .main-site-nav__label .lines {
+.responsive-menu__handler:checked ~ .responsive-menu__label .lines {
   /*hide the middle line*/
   background: transparent;
 
@@ -475,3 +393,14 @@
   }
 }
 
+
+
+
+
+html, body { background-color: #ddd; }
+.responsive-menu { left: 0 }
+.responsive-menu__label { left: $navMenuWidth; }
+.responsive-menu__list__item--parent .responsive-menu__list,
+.responsive-menu__list__item--parent-expanded .responsive-menu__list .responsive-menu__list { height: auto; }
+.responsive-menu__list__item:last-of-type .responsive-menu__list__item:hover .responsive-menu__list { right: 100%; left: inherit}
+.responsive-menu__list__item:last-of-type .responsive-menu__list__item:focus .responsive-menu__list { right: 100%; left: inherit}
