@@ -54,12 +54,28 @@ module.exports = (grunt) ->
         src: '**/*.*'
         dest: 'dist/media/'
 
+    # !HTML Workflow
     processhtml:
       dist:
         options:
           process: true
         files:
           'dist/index.html': 'src/index.html'
+
+    htmlmin:
+      dist:
+        options:
+          removeComments: true
+          collapseWhitespace: true
+          collapseBooleanAttributes: true
+          removeAttributeQuotes: true
+          removeRedundantAttributes: true
+          useShortDoctype: true
+          removeEmptyAttributes: true
+          removeOptionalTags: true
+#           removeEmptyElements: true
+        files:
+          'dist/index.html': 'dist/index.html'
 
 
     # !CSS Workflow
@@ -185,6 +201,7 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-shell'
     grunt.loadNpmTasks 'grunt-processhtml'
     grunt.loadNpmTasks 'grunt-uncss'
+    grunt.loadNpmTasks 'grunt-contrib-htmlmin'
 
     # !Register Tasks
     grunt.registerTask 'default', ['shell', 'media', 'html', 'css', 'js', 'connect', 'watch']
@@ -193,4 +210,4 @@ module.exports = (grunt) ->
     grunt.registerTask 'copy_css', ['copy:css', 'copy:cssdist']
     grunt.registerTask 'js', ['coffee', 'uglify', 'copy:js', 'copy:js_raw', 'copy:js_src_coffee']
     grunt.registerTask 'media', ['copy:media_dev', 'copy:media_dist']
-    grunt.registerTask 'html', ['copy:htmldev', 'processhtml']
+    grunt.registerTask 'html', ['copy:htmldev', 'processhtml', 'htmlmin']

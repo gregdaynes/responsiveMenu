@@ -70,10 +70,6 @@ $tertiary--active--hover: lighten($tertiary--active, 20%);
 // !Small Screen
 // -------------
 
-// root
-.responsive-menu {
-  background-color: purple;
-}
 
 // remove list styling
 .responsive-menu__list {
@@ -88,7 +84,6 @@ $tertiary--active--hover: lighten($tertiary--active, 20%);
       text-decoration: none;
       text-transform: capitalize;
       display: block;
-      color: $white;
       padding: $narrowGutter;
       transition: padding $transitionSpeed ease-in-out;
       outline: none;
@@ -112,85 +107,14 @@ $tertiary--active--hover: lighten($tertiary--active, 20%);
 
 
 
-
-
-
-
-
-
 .responsive-menu__list
   .responsive-menu__list__item
-    .responsive-menu__list__item__link {
-      background-color: $primary;
-}
+    .responsive-menu__list__item__link:focus,
 .responsive-menu__list
   .responsive-menu__list__item
     .responsive-menu__list__item__link:hover {
-      background-color: $primary--hover;
+      text-decoration: underline;
 }
-
-
-
-
-.responsive-menu__list
-  .responsive-menu__list
-    .responsive-menu__list__item
-      .responsive-menu__list__item__link {
-        background-color: $secondary;
-}
-.responsive-menu__list
-  .responsive-menu__list
-    .responsive-menu__list__item
-      .responsive-menu__list__item__link:hover {
-        background-color: $secondary--hover;
-}
-
-
-
-
-
-
-
-.responsive-menu__list
-  .responsive-menu__list
-    .responsive-menu__list
-      .responsive-menu__list__item
-        .responsive-menu__list__item__link {
-          background-color: $tertiary;
-}
-.responsive-menu__list
-  .responsive-menu__list
-    .responsive-menu__list
-      .responsive-menu__list__item
-        .responsive-menu__list__item__link:hover {
-          background-color: $tertiary--hover;
-}
-
-
-
-
-// active
-.responsive-menu__list
-  .responsive-menu__list__item--active
-    .responsive-menu__list__item__link {
-      background-color: $primary--active;
-}
-
-.responsive-menu__list
-  .responsive-menu__list
-    .responsive-menu__list__item--active
-      .responsive-menu__list__item__link {
-        background-color: $secondary--active;
-}
-
-.responsive-menu__list
-  .responsive-menu__list
-    .responsive-menu__list
-    .responsive-menu__list__item--active
-      .responsive-menu__list__item__link {
-        background-color: $tertiary--active;
-}
-
 
 
 
@@ -256,24 +180,8 @@ $tertiary--active--hover: lighten($tertiary--active, 20%);
   .responsive-menu__list__item__link {
     color: $black;
     padding: 0 $narrowGutter;
-    background-color: transparent;
   }
 
-  // list > item :hover
-  // list > item :hover > link
-  // list > item :focus
-  // list > item :expanded
-  .responsive-menu__list__item:hover
-    > .responsive-menu__list__item__link,
-  .responsive-menu__list__item__link:focus  {
-    background-color: $secondaryHighlight;
-  }
-
-  // list > list
-  .responsive-menu__list
-    .responsive-menu__list {
-      background-color: $secondaryHighlight;
-  }
 
 
 
@@ -419,7 +327,7 @@ $tertiary--active--hover: lighten($tertiary--active, 20%);
 .responsive-menu__label {
   user-select: none;
   background-color: $secondary;
-
+  @include hide(hide-text);
   @include proportional(10%);
 }
 
@@ -471,11 +379,8 @@ $tertiary--active--hover: lighten($tertiary--active, 20%);
 
 
 
-
-
-.responsive-menu { left: 0 }
-.responsive-menu__label { left: $navMenuWidth; }
-.responsive-menu__list__item--parent .responsive-menu__list,
-.responsive-menu__list__item--parent-expanded .responsive-menu__list .responsive-menu__list { height: auto; }
-.responsive-menu__list__item:last-of-type .responsive-menu__list__item:hover .responsive-menu__list { right: 100%; left: inherit}
-.responsive-menu__list__item:last-of-type .responsive-menu__list__item:focus .responsive-menu__list { right: 100%; left: inherit}
+/* .responsive-menu { left: 0 } */
+/* .responsive-menu__label { left: $navMenuWidth; } */
+/* .responsive-menu__list__item--parent .responsive-menu__list, .responsive-menu__list__item--parent-expanded .responsive-menu__list .responsive-menu__list { height: auto; } */
+/* .responsive-menu__list__item:last-of-type .responsive-menu__list__item:hover .responsive-menu__list { right: 100%; left: inherit} */
+/* .responsive-menu__list__item:last-of-type .responsive-menu__list__item:focus .responsive-menu__list { right: 100%; left: inherit} */
