@@ -6,7 +6,8 @@
     "type": "git",
     "url": "https://github.com/gregdaynes/responsiveMenu.git"
   },
-  "author": "Gregory Daynes",
+  "author": "@gregdaynes",
+  "copyright": "Gregory Daynes",
   "license": "GPL v3",
   "bugs": {
     "url": "https://github.com/gregdaynes/responsiveMenu/issues"
@@ -30,6 +31,8 @@
     "grunt-contrib-imagemin": "~0.3.0",
     "grunt-webfont": "~0.2.0",
     "grunt-processhtml": "~0.2.5",
-    "grunt-uncss": "~0.1.5"
+    "grunt-uncss": "~0.1.5",
+    "load-grunt-tasks": "~0.2.0",
+    "grunt-banner": "~0.2.0"
   }
 }
