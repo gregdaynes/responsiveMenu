@@ -1,40 +1,27 @@
-/*! ------------------------------------------------------------------------ !*\
-    Created By: Gregory Daynes
-\*! ------------------------------------------------------------------------ !*/
+// !Functions
+// ----------
+@function em($px){
+  @return ($px/16px)+0em;
+}
 
+// !Variables
+// ----------
+$breakpoint: em(768px);
 
-// !Imports
-// --------
+$horizontal-gutter: 24px!default;
+$vertical-gutter:   24px!default;
 
-// Tools
-@import "_utilities";
-@import "_functions";
-@import "_variables";
-@import "_extends";
-@import "_mixins";
+$small: 0.667em;
+$h6   : 0.75em;
+$h5   : 0.83em;
+$base : 1em;
+$h4   : 1em;
+$h3   : 1.17em;
+$h2   : 1.75em;
+$h1   : 2em;
 
-// Styles
-@import "base";
-
-
-
-
-
-// !Model
-// ------
-.responsive-menu {}
-.responsive-menu__list {}
-.responsive-menu__list__item {}
-.responsive-menu__list__item__link {}
-.responsive-menu__list__item--parent {}
-.responsive-menu__list__item--parent
-  .responsive-menu__list__item__link {}
-.responsive-menu__list__item--parent-expanded
-  .responsive-menu__list__item__link {}
-.responsive-menu__list__item--active {}
-.responsive-menu__list__item--active
-  .responsive-menu__list__item__link {}
-
+$navMenuWidth: 276px; // button target should be 44px x 44px for iphone - 320 - 44 = 276px
+$transitionSpeed: .3s;
 
 $primary: #f39c12; // orange
 $primaryHighlight: #f1c40f; // yellow
@@ -66,14 +53,76 @@ $tertiary--active--hover: lighten($tertiary--active, 20%);
 
 
 
+// !Extends
+// --------
+%zero {
+  margin: 0;
+  padding: 0;
+}
+
+%list-style-none {
+  @extend %zero;
+  list-style: none;
+}
+
+// !mixins
+// -------
+@mixin breakpoint($unit, $query: min, $target: "")
+{
+	@if $target != "" {
+		@media #{$target} and (#{$query}: #{$unit}) {
+			@content;
+		}
+	}
+	@else {
+		@media (#{$query}: #{$unit}) {
+			@content;
+		}
+	}
+}
+
+@mixin image-replacement {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin line($background-color: $white, $width: 100%, $height: 3px) {
+  background-color: $background-color;
+  display: inline-block;
+  width: $width;
+  height: $height;
+}
+
+
+/*! normalize.css v2.1.3 | MIT License | git.io/normalize */
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden],template{display:none}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}a{background:transparent}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em;margin:.67em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}mark{background:#ff0;color:#000}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em}pre{white-space:pre-wrap}q{quotes:"\201C" "\201D" "\2018" "\2019"}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:0}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}button,input{line-height:normal}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}
+
+
+// !Model
+// ------
+.responsive-menu {}
+.responsive-menu__list {}
+.responsive-menu__list__item {}
+.responsive-menu__list__item__link {}
+.responsive-menu__list__item--parent {}
+.responsive-menu__list__item--parent
+  .responsive-menu__list__item__link {}
+.responsive-menu__list__item--parent-expanded
+  .responsive-menu__list__item__link {}
+.responsive-menu__list__item--active {}
+.responsive-menu__list__item--active
+  .responsive-menu__list__item__link {}
+
+
+
+
+
+
 
 // !Small Screen
 // -------------
 
-// root
-.responsive-menu {
-  background-color: purple;
-}
 
 // remove list styling
 .responsive-menu__list {
@@ -88,7 +137,6 @@ $tertiary--active--hover: lighten($tertiary--active, 20%);
       text-decoration: none;
       text-transform: capitalize;
       display: block;
-      color: $white;
       padding: $narrowGutter;
       transition: padding $transitionSpeed ease-in-out;
       outline: none;
@@ -112,85 +160,14 @@ $tertiary--active--hover: lighten($tertiary--active, 20%);
 
 
 
-
-
-
-
-
-
 .responsive-menu__list
   .responsive-menu__list__item
-    .responsive-menu__list__item__link {
-      background-color: $primary;
-}
+    .responsive-menu__list__item__link:focus,
 .responsive-menu__list
   .responsive-menu__list__item
     .responsive-menu__list__item__link:hover {
-      background-color: $primary--hover;
+      text-decoration: underline;
 }
-
-
-
-
-.responsive-menu__list
-  .responsive-menu__list
-    .responsive-menu__list__item
-      .responsive-menu__list__item__link {
-        background-color: $secondary;
-}
-.responsive-menu__list
-  .responsive-menu__list
-    .responsive-menu__list__item
-      .responsive-menu__list__item__link:hover {
-        background-color: $secondary--hover;
-}
-
-
-
-
-
-
-
-.responsive-menu__list
-  .responsive-menu__list
-    .responsive-menu__list
-      .responsive-menu__list__item
-        .responsive-menu__list__item__link {
-          background-color: $tertiary;
-}
-.responsive-menu__list
-  .responsive-menu__list
-    .responsive-menu__list
-      .responsive-menu__list__item
-        .responsive-menu__list__item__link:hover {
-          background-color: $tertiary--hover;
-}
-
-
-
-
-// active
-.responsive-menu__list
-  .responsive-menu__list__item--active
-    .responsive-menu__list__item__link {
-      background-color: $primary--active;
-}
-
-.responsive-menu__list
-  .responsive-menu__list
-    .responsive-menu__list__item--active
-      .responsive-menu__list__item__link {
-        background-color: $secondary--active;
-}
-
-.responsive-menu__list
-  .responsive-menu__list
-    .responsive-menu__list
-    .responsive-menu__list__item--active
-      .responsive-menu__list__item__link {
-        background-color: $tertiary--active;
-}
-
 
 
 
@@ -236,7 +213,7 @@ $tertiary--active--hover: lighten($tertiary--active, 20%);
 // -----------------------
 // full size navigation, tablet and large devices
 // dropdown support using hover, requires media-queries
-@include breakpoint($bp4, min-width) {
+@include breakpoint($breakpoint, min-width) {
 
   // root
   .responsive-menu {
@@ -256,24 +233,8 @@ $tertiary--active--hover: lighten($tertiary--active, 20%);
   .responsive-menu__list__item__link {
     color: $black;
     padding: 0 $narrowGutter;
-    background-color: transparent;
   }
 
-  // list > item :hover
-  // list > item :hover > link
-  // list > item :focus
-  // list > item :expanded
-  .responsive-menu__list__item:hover
-    > .responsive-menu__list__item__link,
-  .responsive-menu__list__item__link:focus  {
-    background-color: $secondaryHighlight;
-  }
-
-  // list > list
-  .responsive-menu__list
-    .responsive-menu__list {
-      background-color: $secondaryHighlight;
-  }
 
 
 
@@ -374,7 +335,7 @@ $tertiary--active--hover: lighten($tertiary--active, 20%);
     cursor: pointer;
     }
 
-@include breakpoint($bp4, max-width) {
+@include breakpoint($breakpoint, max-width) {
 
 .responsive-menu {
   position: fixed;
@@ -418,14 +379,14 @@ $tertiary--active--hover: lighten($tertiary--active, 20%);
 // DECORATIONS
 .responsive-menu__label {
   user-select: none;
-  background-color: $secondary;
-
-  @include proportional(10%);
+  width: 44px;
+  height: 44px;
+  @include image-replacement;
 }
 
 .lines {
   //create middle line
-  @include line;
+  @include line($black);
 
   // centering
   width: 50%;
@@ -439,7 +400,7 @@ $tertiary--active--hover: lighten($tertiary--active, 20%);
 
   /*create the upper and lower lines as pseudo-elements of the middle line*/
   &:before, &:after {
-    @include line;
+    @include line($black);
     position: absolute;
     left: 0;
     right: 0;
@@ -471,11 +432,9 @@ $tertiary--active--hover: lighten($tertiary--active, 20%);
 
 
 
+/* .responsive-menu { left: 0 } */
+/* .responsive-menu__label { left: $navMenuWidth; } */
+/* .responsive-menu__list__item--parent .responsive-menu__list, .responsive-menu__list__item--parent-expanded .responsive-menu__list .responsive-menu__list { height: auto; } */
+/* .responsive-menu__list__item:last-of-type .responsive-menu__list__item:hover .responsive-menu__list { right: 100%; left: inherit} */
+/* .responsive-menu__list__item:last-of-type .responsive-menu__list__item:focus .responsive-menu__list { right: 100%; left: inherit} */
 
-
-.responsive-menu { left: 0 }
-.responsive-menu__label { left: $navMenuWidth; }
-.responsive-menu__list__item--parent .responsive-menu__list,
-.responsive-menu__list__item--parent-expanded .responsive-menu__list .responsive-menu__list { height: auto; }
-.responsive-menu__list__item:last-of-type .responsive-menu__list__item:hover .responsive-menu__list { right: 100%; left: inherit}
-.responsive-menu__list__item:last-of-type .responsive-menu__list__item:focus .responsive-menu__list { right: 100%; left: inherit}

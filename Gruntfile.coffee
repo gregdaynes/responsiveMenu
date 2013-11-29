@@ -35,6 +35,11 @@ module.exports = (grunt) ->
         cwd: '.tmp/css/'
         src: ['**/*.css', '**/*.map']
         dest: 'dev/css/'
+      css_dist:
+        expand: true
+        cwd: '.tmp/css/'
+        src: ['**/*.css']
+        dest: 'dist/css/'
 
       # copy js to dev folder
       js:
@@ -74,10 +79,15 @@ module.exports = (grunt) ->
         cwd: '.tmp/css'
         src: '**/*.css'
 
+    uncss:
+      dist:
+        files:
+          'dist/css/responsiveMenu.css': 'dist/index.html'
+
     cssmin:
       build:
         options:
-#           report: 'gzip'
+          report: 'gzip'
           keepSpecialComments: 1
         files: [{
           expand: true
@@ -175,7 +185,7 @@ module.exports = (grunt) ->
         tasks: 'css'
       html:
         files: 'src/*.html'
-        tasks: 'html'
+        tasks: 'default'
       livereload:
         options:
           livereload: true
@@ -205,7 +215,9 @@ module.exports = (grunt) ->
     'sass'
     'autoprefixer'
 #     'csslint'
+    'copy:css_dist'
     'copy:css'
+    'uncss'
     'cssmin'
     'usebanner:css'
   ]
