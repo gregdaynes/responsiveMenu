@@ -92,7 +92,7 @@ module.exports = (grunt) ->
     cssmin:
       build:
         options:
-          report: 'gzip'
+#           report: 'gzip'
           keepSpecialComments: 1
         files: [{
           expand: true
@@ -130,7 +130,7 @@ module.exports = (grunt) ->
     uglify:
       options:
         preserveComments: 'some'
-        report: 'gzip'
+#         report: 'gzip'
         compress:
           global_defs:
             "DEBUG": false
@@ -166,11 +166,11 @@ module.exports = (grunt) ->
 
     # !Connect
     connect:
-#       build:
-#         options:
-#           port: 4000
-#           base: 'dev'
-#           livereload: true
+      build:
+        options:
+          port: 4000
+          base: 'dev'
+          livereload: true
       dist:
         options:
           port: 5000
