@@ -6,51 +6,48 @@
 
 // !Variables
 // ----------
-$breakpoint: em(768px);
-
-$horizontal-gutter: 24px!default;
-$vertical-gutter:   24px!default;
-
-$small: 0.667em;
-$h6   : 0.75em;
-$h5   : 0.83em;
-$base : 1em;
-$h4   : 1em;
-$h3   : 1.17em;
-$h2   : 1.75em;
-$h1   : 2em;
-
-$navMenuWidth: 276px; // button target should be 44px x 44px for iphone - 320 - 44 = 276px
+$breakpoint: 960px;
 $transitionSpeed: .3s;
 
-$primary: #f39c12; // orange
-$primaryHighlight: #f1c40f; // yellow
-$secondary: #7f8c8d; // greenish grey
-$secondaryHighlight: #95a5a6; // lighter grey
-$translucent: rgba(255,255,255,0.3); // transparent white
+// Shadows
+$shadow__vertical: 2px;
+$shadow__horizontal: 2px;
+$shadow__feather: 2px;
+$shadow__color: rgba(0,0,0,0.33);
+$shadow__spread: 2px;
 
-$black: #000;
-$white: #fff;
+$shadow--top: 0 $shadow__vertical $shadow__feather $shadow__color;
+$shadow--top-left: $shadow__horizontal $shadow__vertical $shadow__feather $shadow__color;
+$shawow--top-right: ($shadow__horizontal * -1) $shadow__vertical $shadow__feather $shadow__color;
+$shadow--left: $shadow__horizontal 0 $shadow__feather $shadow__color;
+$shadow--right: ($shadow__horizontal * -1) 0 $shadow__feather $shadow__color;
 
+// Colors 2.0
+$color--dark: #333;
+$color--medium: #444;
+$color--light: #ccc;
+$color--highlight: #158db8;
+$color--translucent: rgba(0,0,0,0.3);
+
+// Sizes
+$size--small: 0.667em;
+$size--h6   : 0.75em;
+$size--h5   : 0.83em;
+$size--base : 1em;
+$size--h4   : 1em;
+$size--h3   : 1.17em;
+$size--h2   : 1.75em;
+$size--h1   : 2em;
+
+// Gutter
 $gutter:       24px;
-$narrowGutter: 12px;
-$skinnyGutter: 6px;
+$gutter--narrow: 12px;
+$gutter--skinny: 6px;
 
-$primary: red;
-$primary--hover: lighten($primary, 20%);
-$secondary: $primary--hover;
-$secondary--hover: orange;
-$tertiary: $secondary--hover;
-$tertiary--hover: yellow;
-
-$primary--active: purple;
-$primary--active--hover: lighten($primary--active, 20%);
-$secondary--active: green;
-$secondary--active--hover: lighten($secondary--active, 20%);
-$tertiary--active: blue;
-$tertiary--active--hover: lighten($tertiary--active, 20%);
-
-
+// Dimensions
+$width--touch-target: 44px;
+$width--menu: 100%;
+$height--touch-target: 44px;
 
 
 // !Extends
@@ -82,158 +79,282 @@ $tertiary--active--hover: lighten($tertiary--active, 20%);
 }
 
 @mixin image-replacement {
+  overflow: hidden;
   text-indent: 100%;
   white-space: nowrap;
-  overflow: hidden;
 }
 
-@mixin line($background-color: $white, $width: 100%, $height: 3px) {
-  background-color: $background-color;
-  display: inline-block;
-  width: $width;
-  height: $height;
+@mixin font-size($font-size: 16, $line-height: 1.6) {
+  font-size: #{$font-size};
+  @if $line-height {
+    line-height: $line-height;
+  }
+
 }
 
 
 /*! normalize.css v2.1.3 | MIT License | git.io/normalize */
-article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden],template{display:none}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}a{background:transparent}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em;margin:.67em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}mark{background:#ff0;color:#000}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em}pre{white-space:pre-wrap}q{quotes:"\201C" "\201D" "\2018" "\2019"}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:0}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}button,input{line-height:normal}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block;}audio,canvas,video{display:inline-block;}audio:not([controls]){display:none;height:0;}[hidden],template{display:none;}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}body{margin:0;}a{background:transparent;}a:focus{outline:thin dotted;}a:active,a:hover{outline:0;}h1{margin:.67em 0;font-size:$size--h1;}abbr[title]{border-bottom:1px dotted;}b,strong{font-weight:bold;}dfn{font-style:italic;}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0;}mark{background:#ff0;color:#000;}code,kbd,pre,samp{font-size:1em;font-family:monospace,serif;}pre{white-space:pre-wrap;}q{quotes:"\201C" "\201D" "\2018" "\2019";}small{font-size:80%;}sub,sup{position:relative;vertical-align:baseline;font-size:75%;line-height:0;}sup{top:-0.5em;}sub{bottom:-0.25em;}img{border:0;}svg:not(:root){overflow:hidden;}figure{margin:0;}fieldset{margin:0 2px;padding:.35em .625em .75em;border:1px solid silver;}legend{padding:0;border:0;}button,input,select,textarea{margin:0;font-size:100%;font-family:inherit;}button,input{line-height:normal;}button,select{text-transform:none;}button,html input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button;}button[disabled],html input[disabled]{cursor:default;}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;}input[type="search"]{-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;-webkit-appearance:textfield;}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0;}textarea{overflow:auto;vertical-align:top;}table{border-spacing:0;border-collapse:collapse;}p{margin-top:0;}
+
 
 
 // !Model
 // ------
 .responsive-menu {}
 .responsive-menu__list {}
-.responsive-menu__list__item {}
-.responsive-menu__list__item__link {}
-.responsive-menu__list__item--parent {}
-.responsive-menu__list__item--parent
-  .responsive-menu__list__item__link {}
-.responsive-menu__list__item--parent-expanded
-  .responsive-menu__list__item__link {}
-.responsive-menu__list__item--active {}
-.responsive-menu__list__item--active
-  .responsive-menu__list__item__link {}
+.responsive-menu__item {}
+.responsive-menu__item a {}
+.responsive-menu__item a em {}
+
+// States
+.is-parent {}
+:hover, :focus, :active {}
+
+// !Style Guide
+// ------------
+.single-line-css { /* property */ }
+
+.single-line-css,
+.with-mulitple-selectors {
+  /* property */
+}
+
+.multi-line-css {
+  /* properties */
+}
+
+.multi-line-css,
+.multiple-selectors {
+  /* properties */
+}
 
 
 
-
-
-
-
-// !Small Screen
-// -------------
-
+// !General Styles
+// ---------------
 
 // remove list styling
 .responsive-menu__list {
   @extend %list-style-none;
 }
 
-// top level link
-// ul > li > a
-.responsive-menu__list
-  .responsive-menu__list__item
-    .responsive-menu__list__item__link {
-      text-decoration: none;
-      text-transform: capitalize;
+// link styling
+.responsive-menu__item a {
+  display: block;
+  padding: 0 $gutter--narrow;
+  outline: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-weight: 200;
+}
+
+.responsive-menu__handler,
+.responsive-menu__label {
+  display: none;
+}
+
+
+.disable-scroll {
+  position: fixed;
+}
+
+
+
+
+// !Small Screen
+// -------------
+@include breakpoint(em($breakpoint - 1px), max-width) {
+
+  // button should be 44px wide
+  // offset menu should be 100% of screen width, minus $width--touch-target
+  .responsive-menu {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -$width--menu;
+    z-index: 3;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch; // enable intertia scrolling
+    box-sizing: border-box;
+    margin-left: $width--touch-target * -1;
+    padding: 0 $gutter--narrow 0 ($gutter--narrow + $width--touch-target);
+    width: 100%;
+    background-color: $color--dark;
+    box-shadow: $shadow--left;
+  }
+
+
+  // !Menu Item
+  // ----------
+  .responsive-menu__item {
+
+
+    a {
+      @include font-size($size--base, $height--touch-target);
+      color: $color--light;
+    }
+
+    a em { // small descriptive text in item
       display: block;
-      padding: $narrowGutter;
-      transition: padding $transitionSpeed ease-in-out;
-      outline: none;
-}
+      @include font-size($size--h6);
+      margin-top: -1em;
+      color: $color--medium;
+      font-style: normal;
+    }
 
-// list > list > item :before
-.responsive-menu__list
-  .responsive-menu__list
-    .responsive-menu__list__item__link:before {
-      content: '';
-      margin-right: $gutter;
-}
-
-// list > list > list > item :before
-.responsive-menu__list
-  .responsive-menu__list
-    .responsive-menu__list
-      .responsive-menu__list__item__link:before {
-        margin-left: $gutter;
-}
-
-
-
-.responsive-menu__list
-  .responsive-menu__list__item
-    .responsive-menu__list__item__link:focus,
-.responsive-menu__list
-  .responsive-menu__list__item
-    .responsive-menu__list__item__link:hover {
+    &.is-parent > a { // First item of a parent
+      border-top: 1px solid $color--medium;
+      margin-top: $gutter--narrow;
       text-decoration: underline;
+      color: $color--medium;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $color--light;
+      }
+    }
+
+    a:hover,
+    a:focus,
+    a.active {
+      background-color: $color--highlight;
+    }
+  }
+
+  .device {
+    .responsive-menu__item {
+      a:hover,
+      a:active,
+      a:focus {
+        background-color: transparent;
+      }
+    }
+  }
+
+
+
+
+
+  // desktop
+    // hover and active
+  // mobile
+    // active
+
+  // open menu state
+  .responsive-menu__handler:checked {
+
+    & ~ .responsive-menu { left: 0; }
+
+    & ~ .responsive-menu__label {
+      position: fixed;
+      top: 0;
+      left: 100%;
+      margin-left: -44px;
+    }
+
+    & ~ .responsive-menu__label .lines {
+      //hide the middle line
+      background: transparent;
+
+      //overlay the lines by setting both their top values to 0
+      &:before,
+      &:after{
+        top: 0;
+      }
+
+      // rotate the lines to form the x shape
+      &:before{ transform: rotate3d(0,0,1,45deg); }
+
+      &:after{ transform: rotate3d(0,0,1,-45deg); }
+    }
+  }
+
+
+
+  .responsive-menu__label {
+    @include image-replacement;
+    display: block;
+    width: $width--touch-target;
+    height: $height--touch-target;
+    user-select: none;
+    position: fixed;
+    z-index: 100;
+    text-align: center;
+    cursor: pointer;
+    background-color: $color--dark;
+    box-shadow: $shadow--top-left;
+  }
+
+
+  .lines,
+  .lines:before,
+  .lines:after {
+    display: inline-block;
+    width: 100%;
+    height: 3px;
+    background-color: $color--light;
+  }
+
+  .lines {
+    //create middle line
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+
+    // centering
+    width: 50%;
+    transition: background 0;
+
+    // create the upper and lower lines as pseudo-elements of the middle line
+    &:before,
+    &:after {
+      position: absolute;
+      right: 0;
+      left: 0;
+      content: '';
+      transition: top 0, transform 0;
+      transform-origin: 50% 50%;
+    }
+
+    &:before { top: -6px; }
+
+    &:after { top:   6px; }
+  }
 }
 
 
-
-
-
-
-
-
-
-
-
-// !Small Screen Positioning
-// -------------------------
-
-// list > parent item > list
-// list > parent item expanded > list > list
-.responsive-menu__list__item--parent
-  .responsive-menu__list,
-.responsive-menu__list__item--parent-expanded
-  .responsive-menu__list
-    .responsive-menu__list {
-      height: 0;
-      overflow: hidden;
-}
-
-// list > parent item expanded > list
-// list > parent item expanded > list > list
-.responsive-menu__list__item--parent-expanded
-  .responsive-menu__list,
-.responsive-menu__list__item--parent:hover
-  .responsive-menu__list,
-.responsive-menu__list
-  .responsive-menu__list__item--parent-expanded
-    .responsive-menu__list,
-.responsive-menu__list
-  .responsive-menu__list__item--parent:hover
-    .responsive-menu__list {
-      height: auto;
-}
 
 
 // !Medium -> Large Screen
 // -----------------------
 // full size navigation, tablet and large devices
 // dropdown support using hover, requires media-queries
-@include breakpoint($breakpoint, min-width) {
+@include breakpoint(em($breakpoint), min-width) {
 
   // root
   .responsive-menu {
-    background-color: $translucent;
+    background-color: $color--translucent;
   }
 
   // list > item
-  .responsive-menu__list__item {
+  .responsive-menu__item {
     display: table-cell;
     width: 1%;
-    text-align: center;
     vertical-align: middle;
+    text-align: center;
   }
 
 
   // list > item
-  .responsive-menu__list__item__link {
-    color: $black;
-    padding: 0 $narrowGutter;
+  .responsive-menu__item a {
+    padding: 0 $gutter--narrow;
+    color: #000;
   }
+
 
 
 
@@ -242,20 +363,20 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
   // list > list > list > item :before
   .responsive-menu__list
     .responsive-menu__list
-      .responsive-menu__list__item__link:before,
+      .responsive-menu__item a:before,
   .responsive-menu__list
     .responsive-menu__list
       .responsive-menu__list
-        .responsive-menu__list__item__link:before {
-        content: '';
+        .responsive-menu__item a:before {
         margin-right: 0;
         margin-left: 0;
+        content: '';
   }
 
   // list > list > item
   .responsive-menu__list
     .responsive-menu__list
-      .responsive-menu__list__item {
+      .responsive-menu__item {
         display: block;
         width: 100%;
         text-align: left;
@@ -264,25 +385,25 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 
   // !Medium -> Large Screen Positioning
   // -----------------------------------
-  .responsive-menu__list__item--parent {
+  .responsive-menu__item.is-parent {
     position:relative;
   }
 
   // list > parent item > list
-  .responsive-menu__list__item--parent
+  .responsive-menu__item.is-parent
     .responsive-menu__list {
-      height: auto;
-      overflow: visible;
       position: absolute;
       left: -999em;
       z-index: 2;
+      overflow: visible;
+      height: auto;
   }
 
   // list > parent item expanded > list
   // list > item :hover > list
-  .responsive-menu__list__item--parent-expanded >
+  .responsive-menu__item.is-parent-expanded >
     .responsive-menu__list,
-  .responsive-menu__list__item:hover >
+  .responsive-menu__item:hover >
     .responsive-menu__list {
       top: 100%;
       right: 0;
@@ -293,24 +414,24 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 
   // list > parent item expanded > list > parent item expanded > list
   // list > item :hover > list > item :hover > list
-  .responsive-menu__list__item--parent-expanded
-    .responsive-menu__list__item--parent-expanded >
+  .responsive-menu__item.is-parent-expanded
+    .responsive-menu__item.is-parent-expanded >
       .responsive-menu__list,
-  .responsive-menu__list__item:hover
-    .responsive-menu__list__item:hover >
+  .responsive-menu__item:hover
+    .responsive-menu__item:hover >
       .responsive-menu__list {
-        left: 100%;
         top: 0;
+        left: 100%;
   }
 
-  .responsive-menu__list__item:last-of-type
-    .responsive-menu__list__item:hover
+  .responsive-menu__item:last-of-type
+    .responsive-menu__item:hover
       .responsive-menu__list,
-  .responsive-menu__list__item:last-of-type
-    .responsive-menu__list__item:focus
+  .responsive-menu__item:last-of-type
+    .responsive-menu__item:focus
       .responsive-menu__list {
         right: 100%;
-        left: inherit
+        left: inherit;
   }
 
 
@@ -319,122 +440,4 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 
 
 
-//
-// !Responsive Menu - Utilities
-// ----------------------------
-.responsive-menu__handler {
-  display: none;
-  }
-.responsive-menu__label {
-  display: none;
-  position: absolute;
-  text-align: center;
-  z-index: 100;
-  }
-  .responsive-menu__label:hover {
-    cursor: pointer;
-    }
-
-@include breakpoint($breakpoint, max-width) {
-
-.responsive-menu {
-  position: fixed;
-  top: 0;
-  left: -$navMenuWidth;
-  bottom: 0;
-  width: $navMenuWidth;
-  z-index: 3;
-  overflow: scroll;
-  }
-
-
-
-.responsive-menu,
-.responsive-menu__label {
-  transition: left $transitionSpeed ease-in-out;
-  }
-
-.responsive-menu__label {
-  display: inline;
-  }
-
-.responsive-menu__handler:checked ~ .responsive-menu {
-  left: 0;
-  }
-
-.responsive-menu__handler:checked ~ .responsive-menu__label {
-  left: $navMenuWidth;
-  }
-
-// end breakpoint
-}
-
-
-
-
-
-
-
-//
-// DECORATIONS
-.responsive-menu__label {
-  user-select: none;
-  width: 44px;
-  height: 44px;
-  @include image-replacement;
-}
-
-.lines {
-  //create middle line
-  @include line($black);
-
-  // centering
-  width: 50%;
-  margin: auto;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  transition: background 0;
-
-  /*create the upper and lower lines as pseudo-elements of the middle line*/
-  &:before, &:after {
-    @include line($black);
-    position: absolute;
-    left: 0;
-    right: 0;
-    content: '';
-    transform-origin: 50% 50%;
-    transition: top 0, transform 0;
-  }
-  &:before { top: -6px; }
-  &:after { top:   6px; }
-}
-
-.responsive-menu__handler:checked ~ .responsive-menu__label .lines {
-  /*hide the middle line*/
-  background: transparent;
-
-  /*overlay the lines by setting both their top values to 0*/
-  &:before, &:after{
-    top: 0;
-  }
-
-  // rotate the lines to form the x shape
-  &:before{
-    transform: rotate3d(0,0,1,45deg);
-  }
-  &:after{
-    transform: rotate3d(0,0,1,-45deg);
-  }
-}
-
-
-
-/* .responsive-menu { left: 0 } */
-/* .responsive-menu__label { left: $navMenuWidth; } */
-/* .responsive-menu__list__item--parent .responsive-menu__list, .responsive-menu__list__item--parent-expanded .responsive-menu__list .responsive-menu__list { height: auto; } */
-/* .responsive-menu__list__item:last-of-type .responsive-menu__list__item:hover .responsive-menu__list { right: 100%; left: inherit} */
-/* .responsive-menu__list__item:last-of-type .responsive-menu__list__item:focus .responsive-menu__list { right: 100%; left: inherit} */
 
