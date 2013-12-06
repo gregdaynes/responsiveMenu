@@ -42,11 +42,16 @@ module.exports = (grunt) ->
         dest: 'dist/css/'
 
       # copy js to dev folder
-      js:
+      js_dev:
         expand: true
         cwd: '.tmp/js/'
         src: ['**/*.js', '**/*.map']
         dest: 'dev/js/'
+      js_dist:
+        expand: true
+        cwd: '.tmp/js/'
+        src: '**/*.js'
+        dest: 'dist/js/'
 
     # Process sass files that are not prefixed with an underscore or in a folder
     # ex: style.scss, not _variables.scss, not modules/slider.scss
@@ -125,7 +130,7 @@ module.exports = (grunt) ->
     uglify:
       options:
         preserveComments: 'some'
-#         report: 'gzip'
+        report: 'gzip'
         compress:
           global_defs:
             "DEBUG": false
@@ -133,8 +138,8 @@ module.exports = (grunt) ->
       build:
         expand: true
         # flatten: true
-        cwd: '.tmp/js/'
-        src: '*.js'
+        cwd: 'dist/js/'
+        src: '**/*.js'
         dest: 'dist/js/'
 
     processhtml:
@@ -161,11 +166,11 @@ module.exports = (grunt) ->
 
     # !Connect
     connect:
-      build:
-        options:
-          port: 4000
-          base: 'dev'
-          livereload: true
+#       build:
+#         options:
+#           port: 4000
+#           base: 'dev'
+#           livereload: true
       dist:
         options:
           port: 5000
@@ -224,7 +229,8 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'js', [
     'coffee'
-    'copy:js'
+    'copy:js_dev'
+    'copy:js_dist'
     'uglify'
   ]
 
