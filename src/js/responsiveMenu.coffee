@@ -1,5 +1,11 @@
+###
+Nested Menus
+###
+
 # Global Variables
-menuParents = document.getElementsByClassName('responsive-menu__list__item--parent')
+menuParents = document.getElementsByClassName('is-parent')
+body = document.body
+
 
 # getParent
 # Recursive selector
@@ -8,8 +14,8 @@ this.getParent = (el, tag) ->
     el = el.parentNode
 
     if el.tagName is tag
-      if el.classList.contains('responsive-menu__list__item--parent')
-        el.classList.add('responsive-menu__list__item--parent-expanded')
+      if el.classList.contains('is-parent')
+        el.classList.add('is-expanded')
 
   return null
 
@@ -17,32 +23,44 @@ this.getParent = (el, tag) ->
 # detect clicks and process
 this.clickHandler = ->
   event.preventDefault()
-  this.focusIn(event)
+  this.focus(event)
 
 # focusIn
 # main focus function
 # controls events
-this.focusIn = (event) ->
+this.focus = (event) ->
   # Focused Element
   element = event.srcElement
 
-  if element.parentNode.classList.contains('responsive-menu__list__item--parent-expanded')
+  if element.parentNode.classList.contains('is-expanded')
     #console.log('has is-expanded')
-    element.parentNode.classList.remove('responsive-menu__list__item--parent-expanded')
+    element.parentNode.classList.remove('is-expanded')
     return
 
   # find all expanded menus
-  for expanded in menuParents when expanded.classList.contains('responsive-menu__list__item--parent-expanded')
+  for expanded in menuParents when expanded.classList.contains('is-expanded')
     # remove expanded class
-    expanded.classList.remove('responsive-menu__list__item--parent-expanded')
+    expanded.classList.remove('is-expanded')
 
   # send to recursive expander
   this.getParent(element, "LI")
 
 
 # Focus
-document.addEventListener "focusin", (event) => this.focusIn(event)
+document.addEventListener "focusin", (event) => this.focus(event)
 
 # Click
-for menuItem in menuParents
-  menuItem.firstElementChild.addEventListener "click", (event) => this.clickHandler(event)
+for menuItemParent in menuParents
+  menuItemParent.firstElementChild.addEventListener "click", (event) => this.clickHandler(event)
+
+
+
+# Prevent document scrolling behind menu
+menuLabel = document.getElementById 'responsive-menu__handler'
+
+menuLabel.addEventListener "click", () ->
+  if menuLabel.checked is true
+    body.classList.add 'disable-scroll'
+    return
+
+  body.classList.remove 'disable-scroll'
