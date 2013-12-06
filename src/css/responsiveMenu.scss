@@ -148,144 +148,96 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
   font-weight: 200;
 }
 
-.responsive-menu__handler,
-.responsive-menu__label {
+.responsive-menu__handler  {
   display: none;
 }
 
 
-.disable-scroll {
-  position: fixed;
-}
+
 
 
 
 
 // !Small Screen
 // -------------
-@include breakpoint(em($breakpoint - 1px), max-width) {
 
-  // button should be 44px wide
-  // offset menu should be 100% of screen width, minus $width--touch-target
-  .responsive-menu {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: -$width--menu;
-    z-index: 3;
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch; // enable intertia scrolling
-    box-sizing: border-box;
-    margin-left: $width--touch-target * -1;
-    padding: 0 $gutter--narrow 0 ($gutter--narrow + $width--touch-target);
-    width: 100%;
-    background-color: $color--dark;
-    box-shadow: $shadow--left;
+// button should be 44px wide
+// offset menu should be 100% of screen width, minus $width--touch-target
+.responsive-menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -$width--menu;
+  z-index: 3;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch; // enable intertia scrolling
+  box-sizing: border-box;
+  margin-left: $width--touch-target * -1;
+  padding: 0 $gutter--narrow 0 ($gutter--narrow + $width--touch-target);
+  width: 100%;
+  background-color: $color--dark;
+  box-shadow: $shadow--left;
+}
+
+
+// !Menu Item
+// ----------
+.responsive-menu__item {
+  a {
+    @include font-size($size--base, $height--touch-target);
+    color: $color--light;
   }
 
+  a em { // small descriptive text in item
+    display: block;
+    @include font-size($size--h6);
+    margin-top: -1em;
+    color: $color--medium;
+    font-style: normal;
+  }
 
-  // !Menu Item
-  // ----------
-  .responsive-menu__item {
+  &.is-parent > a { // First item of a parent
+    border-top: 1px solid $color--medium;
+    margin-top: $gutter--narrow;
+    text-decoration: underline;
+    color: $color--medium;
 
-
-    a {
-      @include font-size($size--base, $height--touch-target);
+    &:hover,
+    &:focus,
+    &:active {
       color: $color--light;
     }
+  }
 
-    a em { // small descriptive text in item
-      display: block;
-      @include font-size($size--h6);
-      margin-top: -1em;
-      color: $color--medium;
-      font-style: normal;
-    }
+  a:hover,
+  a:focus,
+  a.active {
+    background-color: $color--highlight;
+  }
+}
 
-    &.is-parent > a { // First item of a parent
-      border-top: 1px solid $color--medium;
-      margin-top: $gutter--narrow;
-      text-decoration: underline;
-      color: $color--medium;
-
-      &:hover,
-      &:focus,
-      &:active {
-        color: $color--light;
-      }
-    }
-
+.device {
+  .responsive-menu__item {
     a:hover,
-    a:focus,
-    a.active {
-      background-color: $color--highlight;
+    a:active,
+    a:focus {
+      background-color: transparent;
     }
   }
+}
 
-  .device {
-    .responsive-menu__item {
-      a:hover,
-      a:active,
-      a:focus {
-        background-color: transparent;
-      }
-    }
-  }
-
-
-
-
-
-  // desktop
-    // hover and active
-  // mobile
-    // active
-
-  // open menu state
-  .responsive-menu__handler:checked {
-
-    & ~ .responsive-menu { left: 0; }
-
-    & ~ .responsive-menu__label {
-      position: fixed;
-      top: 0;
-      left: 100%;
-      margin-left: -44px;
-    }
-
-    & ~ .responsive-menu__label .lines {
-      //hide the middle line
-      background: transparent;
-
-      //overlay the lines by setting both their top values to 0
-      &:before,
-      &:after{
-        top: 0;
-      }
-
-      // rotate the lines to form the x shape
-      &:before{ transform: rotate3d(0,0,1,45deg); }
-
-      &:after{ transform: rotate3d(0,0,1,-45deg); }
-    }
-  }
-
-
-
-  .responsive-menu__label {
-    @include image-replacement;
-    display: block;
-    width: $width--touch-target;
-    height: $height--touch-target;
-    user-select: none;
-    position: fixed;
-    z-index: 100;
-    text-align: center;
-    cursor: pointer;
-    background-color: $color--dark;
-    box-shadow: $shadow--top-left;
-  }
-
+.responsive-menu__label {
+  @include image-replacement;
+  display: block;
+  width: $width--touch-target;
+  height: $height--touch-target;
+  user-select: none;
+  position: fixed;
+  z-index: 100;
+  text-align: center;
+  cursor: pointer;
+  background-color: $color--dark;
+  box-shadow: $shadow--top-left;
 
   .lines,
   .lines:before,
@@ -297,19 +249,15 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
   }
 
   .lines {
-    //create middle line
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     margin: auto;
-
-    // centering
     width: 50%;
     transition: background 0;
 
-    // create the upper and lower lines as pseudo-elements of the middle line
     &:before,
     &:after {
       position: absolute;
@@ -326,6 +274,41 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
   }
 }
 
+// open menu state
+.responsive-menu__handler:checked {
+
+  & ~ .responsive-menu { left: 0; }
+
+  & ~ .responsive-menu__label {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    margin-left: -44px;
+  }
+
+  & ~ .responsive-menu__label .lines {
+    //hide the middle line
+    background: transparent;
+
+    //overlay the lines by setting both their top values to 0
+    &:before,
+    &:after{
+      top: 0;
+    }
+
+    // rotate the lines to form the x shape
+    &:before{ transform: rotate3d(0,0,1,45deg); }
+
+    &:after{ transform: rotate3d(0,0,1,-45deg); }
+  }
+}
+
+@include breakpoint(em($breakpoint - 1px), max-width) {
+  .disable-scroll {
+    position: fixed;
+  }
+}
+
 
 
 
@@ -335,61 +318,49 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 // dropdown support using hover, requires media-queries
 @include breakpoint(em($breakpoint), min-width) {
 
-  // root
-  .responsive-menu {
-    background-color: $color--translucent;
+  .responsive-menu__label {
+    display: none;
   }
 
-  // list > item
+  .responsive-menu {
+    position: inherit;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+  }
+
   .responsive-menu__item {
     display: table-cell;
     width: 1%;
-    vertical-align: middle;
+    vertical-align: top;
     text-align: center;
+
+
+    a {
+      display: block;
+      margin-top: 0;
+      padding: 0;
+      background-color: $color--dark;
+      @include font-size($size--base, 44px);
+    }
+
+    a em {
+      display: none;
+    }
+
+    &.is-parent {
+      position:relative;
+    }
+
+    &.is-parent a {
+      border-top: none;
+      text-decoration: none;
+      color: $color--light;
+      margin-top: 0;
+      padding: 0;
+    }
   }
 
-
-  // list > item
-  .responsive-menu__item a {
-    padding: 0 $gutter--narrow;
-    color: #000;
-  }
-
-
-
-
-
-  // list > list > item :before
-  // list > list > list > item :before
-  .responsive-menu__list
-    .responsive-menu__list
-      .responsive-menu__item a:before,
-  .responsive-menu__list
-    .responsive-menu__list
-      .responsive-menu__list
-        .responsive-menu__item a:before {
-        margin-right: 0;
-        margin-left: 0;
-        content: '';
-  }
-
-  // list > list > item
-  .responsive-menu__list
-    .responsive-menu__list
-      .responsive-menu__item {
-        display: block;
-        width: 100%;
-        text-align: left;
-  }
-
-
-  // !Medium -> Large Screen Positioning
-  // -----------------------------------
-  .responsive-menu__item.is-parent {
-    position:relative;
-  }
-
-  // list > parent item > list
   .responsive-menu__item.is-parent
     .responsive-menu__list {
       position: absolute;
@@ -397,47 +368,54 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
       z-index: 2;
       overflow: visible;
       height: auto;
+      width: 100%
   }
 
-  // list > parent item expanded > list
-  // list > item :hover > list
-  .responsive-menu__item.is-parent-expanded >
-    .responsive-menu__list,
-  .responsive-menu__item:hover >
-    .responsive-menu__list {
+  .responsive-menu__item
+    .responsive-menu__item {
+      display: block;
+      width: 100%;
+      text-align: left;
+
+      a {
+        padding-left: $gutter;
+      }
+  }
+
+  .responsive-menu__item:hover
+    > .responsive-menu__list,
+  .responsive-menu__item:focus
+    > .responsive-menu__list,
+  .responsive-menu__item:active
+    > .responsive-menu__list,
+  .responsive-menu__item.is-expanded
+    > .responsive-menu__list {
       top: 100%;
       right: 0;
       left: 0;
-      padding-left: 0;
       width: 100%;
   }
 
-  // list > parent item expanded > list > parent item expanded > list
-  // list > item :hover > list > item :hover > list
-  .responsive-menu__item.is-parent-expanded
-    .responsive-menu__item.is-parent-expanded >
-      .responsive-menu__list,
   .responsive-menu__item:hover
-    .responsive-menu__item:hover >
+    .responsive-menu__item:hover
+      .responsive-menu__list,
+  .responsive-menu__item:focus
+    .responsive-menu__item:focus
+      .responsive-menu__list,
+  .responsive-menu__item:active
+    .responsive-menu__item:active
+      .responsive-menu__list,
+  .responsive-menu__item.is-expanded
+    .responsive-menu__item.is-expanded
       .responsive-menu__list {
-        top: 0;
         left: 100%;
+        top: 0;
   }
 
   .responsive-menu__item:last-of-type
     .responsive-menu__item:hover
-      .responsive-menu__list,
-  .responsive-menu__item:last-of-type
-    .responsive-menu__item:focus
       .responsive-menu__list {
         right: 100%;
         left: inherit;
   }
-
-
-} // end full-size media query
-
-
-
-
-
+}
