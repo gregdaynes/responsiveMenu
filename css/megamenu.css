@@ -200,6 +200,7 @@ p {
   .megamenu a {
     font-size: 1em;
     line-height: 1.4;
+    padding: 0 12px;
   }
 
   .megamenu > .megamenu__list {
@@ -283,32 +284,39 @@ p {
 
   .megamenu__item:hover .megamenu__panel,
   .megamenu__item:focus .megamenu__panel,
-  .megamenu__item:active .megamenu__panel {
+  .megamenu__item:active .megamenu__panel,
+  .megamenu__item.has-focus .megamenu__panel {
     left: 0;
   }
 
   .megamenu__item:hover > a,
-  .megamenu__item:focus > h3 a,
-  .megamenu__item:active > h3 a,
+  .megamenu__item:focus > a,
+  .megamenu__item:active > a,
+  .megamenu__item.has-focus > a,
   .megamenu__item:hover > h2 a,
-  .megamenu__item:focus > h3 a,
-  .megamenu__item:active > h3 a,
+  .megamenu__item:focus > h2 a,
+  .megamenu__item:active > h2 a,
+  .megamenu__item.has-focus > h2 a,
   .megamenu__item:hover > h3 a,
   .megamenu__item:focus > h3 a,
-  .megamenu__item:active > h3 a {
+  .megamenu__item:active > h3 a,
+  .megamenu__item.has-focus > h3 a {
     background-color: #158db8;
     color: #cccccc;
   }
 
   .megamenu > .megamenu__list > .megamenu__item:hover > a,
-  .megamenu > .megamenu__list > .megamenu__item:focus > h3 a,
-  .megamenu > .megamenu__list > .megamenu__item:active > h3 a,
+  .megamenu > .megamenu__list > .megamenu__item:focus > a,
+  .megamenu > .megamenu__list > .megamenu__item:active > a,
+  .megamenu > .megamenu__list > .megamenu__item.has-focus > a,
   .megamenu > .megamenu__list > .megamenu__item:hover > h2 a,
-  .megamenu > .megamenu__list > .megamenu__item:focus > h3 a,
-  .megamenu > .megamenu__list > .megamenu__item:active > h3 a,
+  .megamenu > .megamenu__list > .megamenu__item:focus > h2 a,
+  .megamenu > .megamenu__list > .megamenu__item:active > h2 a,
+  .megamenu > .megamenu__list > .megamenu__item.has-focus > h2 a,
   .megamenu > .megamenu__list > .megamenu__item:hover > h3 a,
   .megamenu > .megamenu__list > .megamenu__item:focus > h3 a,
-  .megamenu > .megamenu__list > .megamenu__item:active > h3 a {
+  .megamenu > .megamenu__list > .megamenu__item:active > h3 a,
+  .megamenu > .megamenu__list > .megamenu__item.has-focus > h3 a {
     background-color: #444444;
     color: #158db8;
   }

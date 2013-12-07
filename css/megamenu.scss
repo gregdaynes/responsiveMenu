@@ -297,6 +297,7 @@ p {
 
 .megamenu a {
   @include font-size($size--h4, 1.4);
+  padding: 0 $gutter--narrow;
 }
 
 
@@ -360,7 +361,8 @@ p {
 .megamenu__item {
   &:hover,
   &:focus,
-  &:active {
+  &:active,
+  &.has-focus {
     .megamenu__panel {
       left: 0;
     }
@@ -369,18 +371,18 @@ p {
 
 
 .megamenu__item {
-  &:hover > a,    &:focus > h3 a, &:active > h3 a,
-  &:hover > h2 a, &:focus > h3 a, &:active > h3 a,
-  &:hover > h3 a, &:focus > h3 a, &:active > h3 a {
+  &:hover > a,    &:focus > a,    &:active > a,    &.has-focus > a,
+  &:hover > h2 a, &:focus > h2 a, &:active > h2 a, &.has-focus > h2 a,
+  &:hover > h3 a, &:focus > h3 a, &:active > h3 a, &.has-focus > h3 a {
     background-color: $color--highlight;
     color: $color--light;
   }
 }
 
 .megamenu > .megamenu__list > .megamenu__item {
-  &:hover > a,    &:focus > h3 a, &:active > h3 a,
-  &:hover > h2 a, &:focus > h3 a, &:active > h3 a,
-  &:hover > h3 a, &:focus > h3 a, &:active > h3 a {
+  &:hover > a,    &:focus > a,    &:active > a,    &.has-focus > a,
+  &:hover > h2 a, &:focus > h2 a, &:active > h2 a, &.has-focus > h2 a,
+  &:hover > h3 a, &:focus > h3 a, &:active > h3 a, &.has-focus > h3 a {
     background-color: $color--medium;
     color: $color--highlight;
   }

@@ -23,8 +23,38 @@ menuLabel.addEventListener "click", (event) ->
 
 
 
-# megamenu = document.getElementsByClassName 'megamenu'
-# megamenu__panels = document.getElementsByClassName 'megamenu__panel'
-# for panel in megamenu__panels
-#   panel.style.width=megamenu[0].offsetWidth + 'px'
-# DEBUG && console.log megamenu[0].offsetWidth
+# getParent - Recursive selector
+this.getParent = (el, tag, newClass, task) ->
+  while el.parentNode
+    el = el.parentNode
+
+    if el.tagName is tag
+      if task is "add"
+        el.classList.add(newClass)
+      else
+        el.classList.remove(newClass)
+
+  return null
+
+
+# Focus event
+megaMenu = document.getElementsByClassName "megamenu"
+for menu in megaMenu
+  _this = this
+  menuItems = menu.getElementsByTagName "A"
+  for item in menuItems
+    item.addEventListener "focusin", (event) ->
+      element = event.srcElement
+      _this.getParent(element, "LI", "has-focus", "add")
+
+    item.addEventListener "focusout", (event) ->
+      element = event.srcElement
+      _this.getParent(element, "LI", "has-focus", "remove")
+
+
+
+
+
+
+
+
