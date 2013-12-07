@@ -1,99 +1,230 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Responsive Menu</title>
-  <link rel="stylesheet" href="css/responsiveMenu.css" type="text/css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accessible Mega Menu</title>
 
-  <script src="js/modernizr.custom.31476.js"></script>
+<link rel="stylesheet" type="text/css" href="css/normalize.css">
+<link rel="stylesheet" type="text/css" href="css/megamenu.css">
+
+
+
 </head>
+
 <body>
 
+<!-- Menu Collapse Handler -->
+<input type="checkbox" name="megamenu__handler" id="megamenu__handler" class="megamenu__handler" />
+<label for="megamenu__handler" class="megamenu__label" aria-label="Toggle Navigation">
+  <span class="lines">Menu</span>
+</label>
 
-  <!-- Menu Collapse Handler -->
-  <input type="checkbox" name="responsive-menu__handler" id="responsive-menu__handler" class="responsive-menu__handler" />
-  <label for="responsive-menu__handler" class="responsive-menu__label" aria-label="Toggle Navigation">
-    <span class="lines">Menu</span>
-  </label>
+<nav class="megamenu">
+  <ol class="megamenu__list">
+    <li class="megamenu__item">
+      <h2><a href="#">Perceivable</a></h2>
+      <div class="megamenu__panel">
+        <p>Information and user interface components must be presentable to users in ways they can perceive.</p>
+        <ol class="megamenu__group">
+          <li class="megamenu__item  ">
+            <h3><a href="#">1.1 Text Alternatives</a></h3>
+            <p>Provide text alternatives for any non-text content so that it can be changed into other forms people need, such as large print, braille, speech, symbols or simpler language.</p>
+            <ol class="megamenu__list">
+              <li class="megamenu__item"><a href="#">1.1.1 Non-text Content</a></li>
+            </ol>
+          </li>
+          <li class="megamenu__item">
+            <h3><a href="#">1.2 Time-based Media</a></h3>
+            <p>Provide alternatives for time-based media.</p>
+            <ol class="megamenu__group">
+              <li class="megamenu__item"><a href="#">1.2.1 Audio-only and Video-only (Prerecorded)</a></li>
+              <li class="megamenu__item"><a href="#">1.2.2 Captions (Prerecorded)</a></li>
+              <li class="megamenu__item"><a href="#">1.2.3 Audio Description or Media Alternative (Prerecorded)</a>
+                <hr/>
+              </li>
+              <li class="megamenu__item"><a href="#">1.2.4 Captions (Live)</a></li>
+              <li class="megamenu__item"><a href="#">1.2.5 Audio Description (Prerecorded)</a></li>
+              <li class="megamenu__item"><a href="#">1.2.6 Sign Language (Prerecorded)</a>
+                <hr/>
+              </li>
+              <li class="megamenu__item"><a href="#">1.2.7 Extended Audio Description (Prerecorded)</a></li>
+              <li class="megamenu__item"><a href="#">1.2.8 Media Alternative (Prerecorded)</a></li>
+              <li class="megamenu__item"><a href="#">1.2.9 Audio-only (Live)</a></li>
+            </ol>
+          </li>
+          <li class="megamenu__item">
+            <h3><a href="#">1.3 Adaptable</a></h3>
+            <p>Create content that can be presented in different ways (for example simpler layout) without losing information or structure.</p>
+            <ol class="megamenu__group">
+              <li class="megamenu__item"><a href="#">1.3.1 Info and Relationships</a></li>
+              <li class="megamenu__item"><a href="#">1.3.2 Meaningful Sequence</a></li>
+              <li class="megamenu__item"><a href="#">1.3.3 Sensory Characteristics</a></li>
+            </ol>
+          </li>
+          <li class="megamenu__item">
+            <h3><a href="#">1.4 Distinguishable</a></h3>
+            <p>Make it easier for users to see and hear content including separating foreground from background.</p>
+            <ol class="megamenu__group">
+              <li class="megamenu__item"><a href="#">1.4.1 Use of Color</a></li>
+              <li class="megamenu__item"><a href="#">1.4.2 Audio Control</a>
+                <hr/>
+              </li>
+              <li class="megamenu__item"><a href="#">1.4.3 Contrast (Minimum)</a></li>
+              <li class="megamenu__item"><a href="#">1.4.4 Resize Text</a></li>
+              <li class="megamenu__item"><a href="#">1.4.5 Images of Text</a>
+                <hr/>
+              </li>
+              <li class="megamenu__item"><a href="#">1.4.6 Contrast (Enhanced)</a></li>
+              <li class="megamenu__item"><a href="#">1.4.7 Low or No Background Audio</a></li>
+              <li class="megamenu__item"><a href="#">1.4.8 Visual Presentation</a></li>
+              <li class="megamenu__item"><a href="#">1.4.9 Images of Text (No Exception)</a></li>
+            </ol>
+          </li>
+        </ol>
+      </div>
+    </li>
+    <li class="megamenu__item">
+      <h2><a href="#">Operable</a></h2>
+      <div class="megamenu__panel">
+        <p>User interface components and navigation must be operable.</p>
+        <ol class="megamenu__group">
+          <li class="megamenu__item">
+            <h3><a href="#">2.1 Keyboard Accessible</a></h3>
+            <p>Make all functionality available from a keyboard.</p>
+            <ol class="megamenu__group">
+              <li class="megamenu__item"><a href="#">2.1.1 Keyboard</a></li>
+              <li class="megamenu__item"><a href="#">2.1.2 No Keyboard Trap</a>
+                <hr/>
+              </li>
+              <li class="megamenu__item"><a href="#">2.1.3 Keyboard (No Exception)</a></li>
+            </ol>
+          </li>
+          <li class="megamenu__item">
+            <h3><a href="#">2.2 Enough Time</a></h3>
+            <p>Provide users enough time to read and use content.</p>
+            <ol class="megamenu__group">
+              <li class="megamenu__item"><a href="#">2.2.1 Timing Adjustable</a></li>
+              <li class="megamenu__item"><a href="#">2.2.2 Pause, Stop, Hide</a>
+                <hr/>
+              </li>
+              <li class="megamenu__item"><a href="#">2.2.3 Interruptions</a></li>
+              <li class="megamenu__item"><a href="#">2.2.4 Interruptions</a></li>
+              <li class="megamenu__item"><a href="#">2.2.5 Re-authenticating</a></li>
+            </ol>
+          </li>
+          <li class="megamenu__item">
+            <h3><a href="#">2.3 Seizures</a></h3>
+            <p>Do not design content in a way that is known to cause seizures.</p>
+            <ol class="megamenu__group">
+              <li class="megamenu__item"><a href="#">2.3.1 Three Flashes or Below Threshold</a>
+                <hr/>
+              </li>
+              <li class="megamenu__item"><a href="#">2.3.2 Three Flashes</a> </li>
+            </ol>
+          </li>
+          <li class="megamenu__item">
+            <h3><a href="#">2.4 Navigable</a></h3>
+            <p>Provide ways to help users navigate, find content, and determine where they are.</p>
+            <ol class="megamenu__group">
+              <li class="megamenu__item"><a href="#">2.4.1 Bypass Blocks</a></li>
+              <li class="megamenu__item"><a href="#">2.4.2 Page Titled</a></li>
+              <li class="megamenu__item"><a href="#">2.4.3 Focus Order</a></li>
+              <li class="megamenu__item"><a href="#">2.4.4 Link Purpose (In Context)</a>
+                <hr/>
+              </li>
+              <li class="megamenu__item"><a href="#">2.4.5 Multiple Ways</a></li>
+              <li class="megamenu__item"><a href="#">2.4.6 Headings and Labels</a></li>
+              <li class="megamenu__item"><a href="#">2.4.7 Focus Visible</a>
+                <hr/>
+              </li>
+              <li class="megamenu__item"><a href="#">2.4.8 Location</a></li>
+              <li class="megamenu__item"><a href="#">2.4.9 Link Purpose (Link Only)</a></li>
+              <li class="megamenu__item"><a href="#">2.4.10 Section Headings</a></li>
+            </ol>
+          </li>
+        </ol>
+      </div>
+    </li>
+    <li class="megamenu__item">
+      <h2><a href="#">Understandable</a></h2>
+      <div class="megamenu__panel">
+        <p>Information and the operation of user interface must be understandable.</p>
+        <ol class="megamenu__group">
+          <li class="megamenu__item">
+            <h3><a href="#">3.1 Readable</a></h3>
+            <p>Make text content readable and understandable.</p>
+            <ol class="megamenu__group">
+              <li class="megamenu__item"><a href="#">3.1.1 Language of Page</a>
+                <hr/>
+              </li>
+              <li class="megamenu__item"><a href="#">3.1.2 Language of Parts</a>
+                <hr/>
+              </li>
+              <li class="megamenu__item"><a href="#">3.1.3 Unusual Words</a></li>
+              <li class="megamenu__item"><a href="#">3.1.4 Abbreviations</a></li>
+              <li class="megamenu__item"><a href="#">3.1.5 Reading Level</a></li>
+              <li class="megamenu__item"><a href="#">3.1.6 Pronunciation</a></li>
+            </ol>
+          </li>
+          <li class="megamenu__item">
+            <h3><a href="#">3.2 Predictable</a></h3>
+            <p>Make Web pages appear and operate in predictable ways.</p>
+            <ol class="megamenu__list">
+              <li class="megamenu__item"><a href="#">3.2.1 On Focus</a> </li>
+              <li class="megamenu__item"><a href="#">3.2.2 On Input</a>
+                <hr/>
+              </li>
+              <li class="megamenu__item"><a href="#">3.2.3 Consistent Navigation</a>
+                <hr/>
+              </li>
+              <li class="megamenu__item"><a href="#">3.2.4 Consistent Identification</a>
+                <hr/>
+              </li>
+              <li class="megamenu__item"><a href="#">3.2.5 Change on Request</a></li>
+            </ol>
+          </li>
+          <li class="megamenu__item">
+            <h3><a href="#">3.3 Input Assistance</a></h3>
+            <p>Help users avoid and correct mistakes.</p>
+            <ol class="megamenu__list">
+              <li class="megamenu__item"><a href="#">3.3.1 Error Identification</a></li>
+              <li class="megamenu__item"><a href="#">3.3.2 Labels or Instructions</a>
+                <hr/>
+              </li>
+              <li class="megamenu__item"><a href="#">3.3.3 Error Suggestion</a></li>
+              <li class="megamenu__item"><a href="#">3.3.4 Error Prevention (Legal, Financial, Data)</a>
+                <hr/>
+              </li>
+              <li class="megamenu__item"><a href="#">3.3.5 Help</a></li>
+              <li class="megamenu__item"><a href="#">3.3.6 Error Prevention (All)</a></li>
+            </ol>
+          </li>
+        </ol>
+      </div>
+    </li>
+    <li class="megamenu__item">
+      <h2><a href="#">Robust</a></h2>
+      <div class="megamenu__panel">
+        <p>Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.</p>
+        <ol class="megamenu__group">
+          <li  class="megamenu__item">
+            <h3><a href="#">4.1 Compatible</a></h3>
+            <p>Maximize compatibility with current and future user agents, including assistive technologies.</p>
+            <ol class="megamenu__group">
+              <li class="megamenu__item"><a href="#">4.1.1 Parsing</a></li>
+              <li class="megamenu__item"><a href="#">4.1.2 Name, Role, Value</a></li>
+            </ol>
+          </li>
+        </ol>
+      </div>
+    </li>
+  </ol>
+</nav>
 
-  <nav class="responsive-menu">
-    <ul class="responsive-menu__list">
-      <li class="responsive-menu__item"><a href="#1">Menu Item 1 <em>Description of menu item</em></a></li>
-      <li class="responsive-menu__item  is-parent">
-        <a href="#2">Menu Item 2</a>
-        <ul class="responsive-menu__list">
-          <li class="responsive-menu__item"><a  href="#2.1">Menu Item 2.1</a></li>
-          <li class="responsive-menu__item"><a  href="#2.2">Menu Item 2.2 <em>Description of menu item</em></a>
-          <li class="responsive-menu__item  is-parent">
-            <a  href="#2.3">Menu Item 2.3</a>
-            <ul class="responsive-menu__list">
-              <li class="responsive-menu__item"><a  href="#2.3.1">Menu Item 2.3.1</a></li>
-              <li class="responsive-menu__item"><a  href="#2.3.2">Menu Item 2.3.2</a></li>
-              <li class="responsive-menu__item"><a  href="#2.3.3">Menu Item 2.3.3 <em>Description of menu item</em></a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li class="responsive-menu__item  is-parent">
-        <a href="#3">Menu Item 3</a>
-        <ul class="responsive-menu__list">
-          <li class="responsive-menu__item"><a  href="#3.1">Menu Item 3.1</a></li>
-          <li class="responsive-menu__item"><a  href="#3.2">Menu Item 3.2 <em>Description of menu item</em></a></li>
-          <li class="responsive-menu__item"><a  href="#3.3">Menu Item 3.3</a></li>
-          <li class="responsive-menu__item"><a  href="#3.4">Menu Item 3.4</a></li>
-          <li class="responsive-menu__item  is-parent">
-            <a  href="#3.5">Menu Item 3.5</a>
-            <ul class="responsive-menu__list">
-              <li class="responsive-menu__item"><a  href="#3.5.1">Menu Item 3.5.1</a></li>
-              <li class="responsive-menu__item"><a  href="#3.5.2">Menu Item 3.5.2 <em>Description of menu item</em></a></li>
-              <li class="responsive-menu__item"><a  href="#3.5.3">Menu Item 3.5.3 <em>Description of menu item</em></a></li>
-              <li class="responsive-menu__item"><a  href="#3.5.4">Menu Item 3.5.4</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li class="responsive-menu__item  is-parent">
-        <a href="#">Menu Item 4</a>
-        <ul class="responsive-menu__list">
-          <li class="responsive-menu__item"><a  href="#">Menu Item 4.1</a></li>
-          <li class="responsive-menu__item"><a  href="#">Menu Item 4.2 <em>Description of menu item</em></a></li>
-          <li class="responsive-menu__item"><a  href="#">Menu Item 4.3</a></li>
-          <li class="responsive-menu__item"><a  href="#">Menu Item 4.4</a></li>
-          <li class="responsive-menu__item  is-parent">
-            <a  href="#">Menu Item 4.5</a>
-            <ul class="responsive-menu__list">
-              <li class="responsive-menu__item"><a  href="#">Menu Item 4.5.1</a></li>
-              <li class="responsive-menu__item"><a  href="#">Menu Item 4.5.2 <em>Description of menu item</em></a></li>
-              <li class="responsive-menu__item"><a  href="#">Menu Item 4.5.3 <em>Description of menu item</em></a></li>
-              <li class="responsive-menu__item"><a  href="#">Menu Item 4.5.4</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li class="responsive-menu__item  is-parent">
-        <a href="#">Menu Item 5</a>
-        <ul class="responsive-menu__list">
-          <li class="responsive-menu__item"><a  href="#">Menu Item 5.1</a></li>
-          <li class="responsive-menu__item"><a  href="#">Menu Item 5.2 <em>Description of menu item</em></a></li>
-          <li class="responsive-menu__item"><a  href="#">Menu Item 5.3</a></li>
-          <li class="responsive-menu__item"><a  href="#">Menu Item 5.4</a></li>
-          <li class="responsive-menu__item  is-parent">
-            <a  href="#">Menu Item 5.5</a>
-            <ul class="responsive-menu__list">
-              <li class="responsive-menu__item"><a  href="#">Menu Item 5.5.1</a></li>
-              <li class="responsive-menu__item"><a  href="#">Menu Item 5.5.2 <em>Description of menu item</em></a></li>
-              <li class="responsive-menu__item"><a  href="#">Menu Item 5.5.3 <em>Description of menu item</em></a></li>
-              <li class="responsive-menu__item"><a  href="#">Menu Item 5.5.4</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
+<!-- Dummy Content Below -->
 
-
-  <div class="dummycontent">
-    <div id="lipsum">
 <p>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non vehicula neque, ac vestibulum elit. Suspendisse elementum velit tellus, vitae ullamcorper metus dictum a. Morbi non blandit neque. Proin tempor luctus augue et condimentum. Proin vel est iaculis, facilisis magna ut, tincidunt nisl. Nam sit amet lacus id risus sodales faucibus. Fusce a bibendum nibh, eu rutrum urna. Maecenas sagittis vehicula sapien ut venenatis. Nunc cursus ullamcorper metus sit amet euismod. Morbi tincidunt sit amet sem sed vestibulum. Mauris ante erat, molestie vel eros in, laoreet consectetur lectus. Curabitur sit amet cursus mi, a faucibus magna.
 </p>
@@ -153,44 +284,10 @@ Praesent fringilla viverra porttitor. Mauris gravida sit amet nisi id tempus. Cu
 </p>
 <p>
 Aenean ac lacus mauris. Praesent gravida risus at lacus euismod eleifend. Nulla facilisis diam sit amet nibh ornare auctor. Donec at suscipit libero, ut tincidunt ipsum. Donec ultrices congue sapien ut lacinia. Nam congue non mi eu volutpat. Duis molestie urna ac quam interdum lacinia vel at ipsum. Nullam eget felis tellus. Integer lacus justo, eleifend in urna at, sollicitudin mollis nibh. Nulla vulputate viverra tortor, non laoreet arcu tempus nec. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-</p></div>
-  </div>
+</p>
 
-  <!-- build:remove -->
-  <div style="display: none">
-  <!-- UNCSS permanent items -->
-
-  <!-- uncss stuff -->
-  </div>
-  <!-- /build -->
-
-
-  <!-- build:remove -->
-  <script src="js/devUtility.js"></script>
-  <!-- /build -->
-  <script src="js/detectDevice.js"></script>
-  <script src="js/responsiveMenu.js"></script>
-
-  <!-- Modernizr / Yepnope -->
-  <script>
-    yepnope([{
-      test: Modernizr.classlist,
-      nope: 'js/polyfills/classList.min.js'
-    },{
-      test: Modernizr.mq,
-      nope: 'js/polyfills/respond.min.js'
-    }])
-  </script>
-
-  <!-- FastClick -->
-  <script src="js/fastclick.js"></script>
-  <script>
-    window.addEventListener('load', function() {
-      FastClick.attach(document.body);
-      }, false);
-  </script>
-
-
+<script src="js/devUtility.js"></script>
+<script src="js/megamenu.js"></script>
 
 </body>
 </html>
