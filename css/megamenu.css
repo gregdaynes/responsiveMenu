@@ -17,6 +17,53 @@ p {
   margin-top: 0;
 }
 
+.megamenu__item:hover > a,
+.megamenu__item:focus > a,
+.megamenu__item:active > a,
+.megamenu__item.has-focus > a,
+.megamenu__item:hover > h2 a,
+.megamenu__item:focus > h2 a,
+.megamenu__item:active > h2 a,
+.megamenu__item.has-focus > h2 a,
+.megamenu__item:hover > h3 a,
+.megamenu__item:focus > h3 a,
+.megamenu__item:active > h3 a,
+.megamenu__item.has-focus > h3 a {
+  background-color: #158db8;
+  color: #cccccc;
+}
+
+.megamenu > .megamenu__list > .megamenu__item:hover > a,
+.megamenu > .megamenu__list > .megamenu__item:focus > a,
+.megamenu > .megamenu__list > .megamenu__item:active > a,
+.megamenu > .megamenu__list > .megamenu__item.has-focus > a,
+.megamenu > .megamenu__list > .megamenu__item:hover > h2 a,
+.megamenu > .megamenu__list > .megamenu__item:focus > h2 a,
+.megamenu > .megamenu__list > .megamenu__item:active > h2 a,
+.megamenu > .megamenu__list > .megamenu__item.has-focus > h2 a,
+.megamenu > .megamenu__list > .megamenu__item:hover > h3 a,
+.megamenu > .megamenu__list > .megamenu__item:focus > h3 a,
+.megamenu > .megamenu__list > .megamenu__item:active > h3 a,
+.megamenu > .megamenu__list > .megamenu__item.has-focus > h3 a {
+  background-color: #444444;
+}
+
+.device .megamenu__item:hover > a,
+.device .megamenu__item:focus > a,
+.device .megamenu__item:active > a,
+.device .megamenu__item.has-focus > a,
+.device .megamenu__item:hover > h2 a,
+.device .megamenu__item:focus > h2 a,
+.device .megamenu__item:active > h2 a,
+.device .megamenu__item.has-focus > h2 a,
+.device .megamenu__item:hover > h3 a,
+.device .megamenu__item:focus > h3 a,
+.device .megamenu__item:active > h3 a,
+.device .megamenu__item.has-focus > h3 a {
+  background-color: transparent;
+  color: #158db8;
+}
+
 .megamenu,
 .megamenu__label {
   -webkit-transition: 0.3s;
@@ -195,6 +242,8 @@ p {
     margin-left: 0;
     padding-left: 0;
     overflow: visible;
+    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.33);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.33);
   }
 
   .megamenu a {
@@ -228,6 +277,8 @@ p {
     padding: 24px;
     overflow: hidden;
     top: 100%;
+    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.33);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.33);
   }
 
   .megamenu__group {
@@ -287,38 +338,6 @@ p {
   .megamenu__item:active .megamenu__panel,
   .megamenu__item.has-focus .megamenu__panel {
     left: 0;
-  }
-
-  .megamenu__item:hover > a,
-  .megamenu__item:focus > a,
-  .megamenu__item:active > a,
-  .megamenu__item.has-focus > a,
-  .megamenu__item:hover > h2 a,
-  .megamenu__item:focus > h2 a,
-  .megamenu__item:active > h2 a,
-  .megamenu__item.has-focus > h2 a,
-  .megamenu__item:hover > h3 a,
-  .megamenu__item:focus > h3 a,
-  .megamenu__item:active > h3 a,
-  .megamenu__item.has-focus > h3 a {
-    background-color: #158db8;
-    color: #cccccc;
-  }
-
-  .megamenu > .megamenu__list > .megamenu__item:hover > a,
-  .megamenu > .megamenu__list > .megamenu__item:focus > a,
-  .megamenu > .megamenu__list > .megamenu__item:active > a,
-  .megamenu > .megamenu__list > .megamenu__item.has-focus > a,
-  .megamenu > .megamenu__list > .megamenu__item:hover > h2 a,
-  .megamenu > .megamenu__list > .megamenu__item:focus > h2 a,
-  .megamenu > .megamenu__list > .megamenu__item:active > h2 a,
-  .megamenu > .megamenu__list > .megamenu__item.has-focus > h2 a,
-  .megamenu > .megamenu__list > .megamenu__item:hover > h3 a,
-  .megamenu > .megamenu__list > .megamenu__item:focus > h3 a,
-  .megamenu > .megamenu__list > .megamenu__item:active > h3 a,
-  .megamenu > .megamenu__list > .megamenu__item.has-focus > h3 a {
-    background-color: #444444;
-    color: #158db8;
   }
 }
 

@@ -115,10 +115,36 @@ $height--touch-target: 44px;
   display: none;
 }
 
-
-
 p {
   margin-top: 0;
+}
+
+.megamenu__item {
+  &:hover > a,    &:focus > a,    &:active > a,    &.has-focus > a,
+  &:hover > h2 a, &:focus > h2 a, &:active > h2 a, &.has-focus > h2 a,
+  &:hover > h3 a, &:focus > h3 a, &:active > h3 a, &.has-focus > h3 a {
+    background-color: $color--highlight;
+    color: $color--light;
+  }
+}
+
+.megamenu > .megamenu__list > .megamenu__item {
+  &:hover > a,    &:focus > a,    &:active > a,    &.has-focus > a,
+  &:hover > h2 a, &:focus > h2 a, &:active > h2 a, &.has-focus > h2 a,
+  &:hover > h3 a, &:focus > h3 a, &:active > h3 a, &.has-focus > h3 a {
+    background-color: $color--medium;
+  }
+}
+
+.device {
+  .megamenu__item {
+    &:hover > a,    &:focus > a,    &:active > a,    &.has-focus > a,
+    &:hover > h2 a, &:focus > h2 a, &:active > h2 a, &.has-focus > h2 a,
+    &:hover > h3 a, &:focus > h3 a, &:active > h3 a, &.has-focus > h3 a {
+      background-color: transparent;
+      color: $color--highlight;
+    }
+  }
 }
 
 // !Small Screen
@@ -293,6 +319,7 @@ p {
   margin-left: 0;
   padding-left: 0;
   overflow: visible;
+  box-shadow: $shadow--top;
 }
 
 .megamenu a {
@@ -323,6 +350,7 @@ p {
   padding: $gutter;
   overflow: hidden;
   top: 100%;
+  box-shadow: $shadow--top;
 }
 
 .megamenu__group {
@@ -370,23 +398,7 @@ p {
 }
 
 
-.megamenu__item {
-  &:hover > a,    &:focus > a,    &:active > a,    &.has-focus > a,
-  &:hover > h2 a, &:focus > h2 a, &:active > h2 a, &.has-focus > h2 a,
-  &:hover > h3 a, &:focus > h3 a, &:active > h3 a, &.has-focus > h3 a {
-    background-color: $color--highlight;
-    color: $color--light;
-  }
-}
 
-.megamenu > .megamenu__list > .megamenu__item {
-  &:hover > a,    &:focus > a,    &:active > a,    &.has-focus > a,
-  &:hover > h2 a, &:focus > h2 a, &:active > h2 a, &.has-focus > h2 a,
-  &:hover > h3 a, &:focus > h3 a, &:active > h3 a, &.has-focus > h3 a {
-    background-color: $color--medium;
-    color: $color--highlight;
-  }
-}
 
 
 
