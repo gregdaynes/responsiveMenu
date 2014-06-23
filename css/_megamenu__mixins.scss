@@ -1,0 +1,28 @@
+// !mixins
+// -------
+@mixin breakpoint($unit, $query: min, $target: "")
+{
+	@if $target != "" {
+		@media #{$target} and (#{$query}: #{$unit}) {
+			@content;
+		}
+	}
+	@else {
+		@media (#{$query}: #{$unit}) {
+			@content;
+		}
+	}
+}
+
+@mixin image-replacement {
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+
+@mixin font-size($font-size: 16, $line-height: 1.6) {
+  font-size: #{$font-size};
+  @if $line-height {
+    line-height: $line-height;
+  }
+}

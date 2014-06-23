@@ -1,0 +1,44 @@
+// !Variables
+// ----------
+$breakpoint: 768px;
+$transitionSpeed: .3s;
+
+// Shadows
+$shadow__vertical: 2px;
+$shadow__horizontal: 2px;
+$shadow__feather: 2px;
+$shadow__color: rgba(0,0,0,0.33);
+$shadow__spread: 2px;
+
+$shadow--top: 0 $shadow__vertical $shadow__feather $shadow__color;
+$shadow--top-left: $shadow__horizontal $shadow__vertical $shadow__feather $shadow__color;
+$shawow--top-right: ($shadow__horizontal * -1) $shadow__vertical $shadow__feather $shadow__color;
+$shadow--left: $shadow__horizontal 0 $shadow__feather $shadow__color;
+$shadow--right: ($shadow__horizontal * -1) 0 $shadow__feather $shadow__color;
+
+// Colors 2.0
+$color--dark: #333;
+$color--medium: #444;
+$color--light: #ccc;
+$color--highlight: #158db8;
+$color--translucent: rgba(0,0,0,0.3);
+
+// Sizes
+$size--small: 0.667em;
+$size--h6   : 0.75em;
+$size--h5   : 0.83em;
+$size--base : 1em;
+$size--h4   : 1em;
+$size--h3   : 1.17em;
+$size--h2   : 1.75em;
+$size--h1   : 2em;
+
+// Gutter
+$gutter:       24px;
+$gutter--narrow: 12px;
+$gutter--skinny: 6px;
+
+// Dimensions
+$width--touch-target: 44px;
+$width--menu: 100%;
+$height--touch-target: 44px;
