@@ -12,15 +12,18 @@ p {
 }
 
 .megamenu__item {
+  &:hover,
   &:hover > a,    &:focus > a,    &:active > a,    &.has-focus > a,
   &:hover > h2 a, &:focus > h2 a, &:active > h2 a, &.has-focus > h2 a,
   &:hover > h3 a, &:focus > h3 a, &:active > h3 a, &.has-focus > h3 a {
     background-color: $color--highlight;
     color: $color--light;
+    cursor: pointer;
   }
 }
 
 .megamenu > .megamenu__list > .megamenu__item {
+  &:hover,
   &:hover > a,    &:focus > a,    &:active > a,    &.has-focus > a,
   &:hover > h2 a, &:focus > h2 a, &:active > h2 a, &.has-focus > h2 a,
   &:hover > h3 a, &:focus > h3 a, &:active > h3 a, &.has-focus > h3 a {
@@ -30,6 +33,7 @@ p {
 
 .device {
   .megamenu__item {
+    &:hover,
     &:hover > a,    &:focus > a,    &:active > a,    &.has-focus > a,
     &:hover > h2 a, &:focus > h2 a, &:active > h2 a, &.has-focus > h2 a,
     &:hover > h3 a, &:focus > h3 a, &:active > h3 a, &.has-focus > h3 a {
@@ -119,7 +123,37 @@ p {
   padding: 0 $gutter--narrow;
 }
 
+// first level
+// first list
+// list
+.megamenu >
+.megamenu__list {
+  border-collapse: collapse; // important
+//   display: table; // makes it a table
+//   table-layout: fixed; // makes width absolute
+}
 
+// first level
+// first list item
+// list -> item
+.megamenu >
+.megamenu__list >
+.megamenu__item {
+  @include breakpoint($breakpoint, min-width) {
+    display: table-cell; // important
+    vertical-align: middle; // important
+    width: 1%;
+  }
+
+}
+
+.megamenu >
+.megamenu__list >
+.megamenu__item >
+h2 a {
+  line-height: 1;
+  padding: $gutter--skinny inherit;
+}
 
 @import "megamenu__external-elements";
 @import "megamenu__actions";
