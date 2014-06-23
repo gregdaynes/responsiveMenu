@@ -1,0 +1,66 @@
+.megamenu > .megamenu__list > .megamenu__item {
+  @include breakpoint($breakpoint, min-width) {
+    text-align: center;
+  }
+}
+
+.megamenu__panel {
+  @include breakpoint($breakpoint, min-width) {
+    position: absolute;
+    left: -999em;
+    background-color: $color--medium;
+    text-align: left;
+    display: block;
+    width: 100%;
+    padding: $gutter;
+    overflow: hidden;
+    top: 100%;
+    box-shadow: $shadow--top;
+  }
+}
+
+.megamenu__group {
+  @include breakpoint($breakpoint, min-width) {
+    display: block;
+    list-style: none;
+    padding: 0;
+    margin-top: $gutter--narrow;
+  }
+}
+
+.megamenu__group .megamenu__item {
+  @include breakpoint($breakpoint, min-width) {
+  padding: 0; // $gutter--skinny;
+  box-sizing: 0;
+  margin: 0 $gutter--skinny;
+
+  }
+}
+
+
+.megamenu__group .megamenu__group {
+  @include breakpoint($breakpoint, min-width) {
+  display: block;
+  }
+}
+
+.megamenu__group .megamenu__group .megamenu__item {
+  @include breakpoint($breakpoint, min-width) {
+  display: block;
+  width: 100%;
+  }
+
+}
+
+.megamenu__item {
+  &:hover,
+  &:focus,
+  &:active,
+  &.has-focus {
+    .megamenu__panel {
+      @include breakpoint($breakpoint, min-width) {
+        left: 0;
+      }
+    }
+  }
+}

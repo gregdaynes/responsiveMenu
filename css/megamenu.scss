@@ -123,4 +123,16 @@ p {
 
 @import "megamenu__external-elements";
 @import "megamenu__actions";
-@import "megamenu__flexbox";
+@import "megamenu__dropdown";
+
+html.flexbox {
+  // use modernizr to detect if flexbox exists
+  // if so use this
+  @import "megamenu__flexbox";
+}
+
+html.no-flexbox {
+  // if modernizr does not detect flexbox support
+  // remove if not using modernizr
+  @import "megamenu__no-flexbox";
+}

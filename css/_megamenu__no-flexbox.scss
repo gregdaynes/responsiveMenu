@@ -1,0 +1,23 @@
+
+
+// first level
+// first list
+// list
+.megamenu >
+  .megamenu__list {
+      border-collapse: collapse; // important
+      display: table; // makes it a table
+      table-layout: fixed; // makes width absolute
+  }
+
+// first level
+// first list item
+// list -> item
+.megamenu >
+  .megamenu__list >
+    .megamenu__item
+    {
+        display: table-cell; // important
+        vertical-align: top; // important
+        width: 1%;
+    }
