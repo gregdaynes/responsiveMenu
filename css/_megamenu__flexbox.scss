@@ -1,34 +1,21 @@
 // Flexbox Implementation
 // ----------------------
-
-.megamenu > .megamenu__list {
-  @include breakpoint($breakpoint, min-width) {
-    display: flex;
-  }
-}
-
-.megamenu > .megamenu__list > .megamenu__item {
-  @include breakpoint($breakpoint, min-width) {
-    flex-grow: 1;
-  }
-}
-
 .megamenu__group {
   @include breakpoint($breakpoint, min-width) {
 
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  flex-flow: row wrap;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-flow: row wrap;
   }
 }
 
 .megamenu__group .megamenu__item {
   @include breakpoint($breakpoint, min-width) {
 
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 200px;
-  align-self: stretch;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 200px;
+    align-self: stretch;
   }
 }
