@@ -1,119 +1,11 @@
-// !Functions
-// ----------
-@function em($px){
-  @return ($px/16px)+0em;
-}
-
-// !Variables
-// ----------
-$breakpoint: 768px;
-$transitionSpeed: .3s;
-
-// Shadows
-$shadow__vertical: 2px;
-$shadow__horizontal: 2px;
-$shadow__feather: 2px;
-$shadow__color: rgba(0,0,0,0.33);
-$shadow__spread: 2px;
-
-$shadow--top: 0 $shadow__vertical $shadow__feather $shadow__color;
-$shadow--top-left: $shadow__horizontal $shadow__vertical $shadow__feather $shadow__color;
-$shawow--top-right: ($shadow__horizontal * -1) $shadow__vertical $shadow__feather $shadow__color;
-$shadow--left: $shadow__horizontal 0 $shadow__feather $shadow__color;
-$shadow--right: ($shadow__horizontal * -1) 0 $shadow__feather $shadow__color;
-
-// Colors 2.0
-$color--dark: #333;
-$color--medium: #444;
-$color--light: #ccc;
-$color--highlight: #158db8;
-$color--translucent: rgba(0,0,0,0.3);
-
-// Sizes
-$size--small: 0.667em;
-$size--h6   : 0.75em;
-$size--h5   : 0.83em;
-$size--base : 1em;
-$size--h4   : 1em;
-$size--h3   : 1.17em;
-$size--h2   : 1.75em;
-$size--h1   : 2em;
-
-// Gutter
-$gutter:       24px;
-$gutter--narrow: 12px;
-$gutter--skinny: 6px;
-
-// Dimensions
-$width--touch-target: 44px;
-$width--menu: 100%;
-$height--touch-target: 44px;
+@import "megamenu__functions";
+@import "megamenu__variables";
+@import "megamenu__extends";
+@import "megamenu__mixins";
+@import "megamenu__helpers";
 
 
-// !Extends
-// --------
-%zero {
-  margin: 0;
-  padding: 0;
-}
 
-%list-style-none {
-  @extend %zero;
-  list-style: none;
-}
-
-// !mixins
-// -------
-@mixin breakpoint($unit, $query: min, $target: "")
-{
-	@if $target != "" {
-		@media #{$target} and (#{$query}: #{$unit}) {
-			@content;
-		}
-	}
-	@else {
-		@media (#{$query}: #{$unit}) {
-			@content;
-		}
-	}
-}
-
-@mixin image-replacement {
-  overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap;
-}
-
-@mixin font-size($font-size: 16, $line-height: 1.6) {
-  font-size: #{$font-size};
-  @if $line-height {
-    line-height: $line-height;
-  }
-}
-
-// !Model
-// ------
-.megamenu { }
-.megamenu__list { }
-.megamenu__list .megamenu__item { }
-.megamenu__list .megamenu__item h2 { }
-.megamenu__list .megamenu__item h2 a { }
-.megamenu__list .megamenu__panel { }
-.megamenu__list .megamenu__panel p { }
-.megamenu__list .megamenu__panel hr { }
-.megamenu__list .megamenu__panel .megamenu__list { }
-.megamenu__list .megamenu__panel .megamenu__item { }
-.megamenu__list .megamenu__panel .megamenu__item h3 { }
-.megamenu__list .megamenu__panel .megamenu__item h3 a { }
-.megamenu__list .megamenu__panel .megamenu__item p { }
-.megamenu__list .megamenu__panel .megamenu__item .megamenu__list { }
-.megamenu__list .megamenu__panel .megamenu__item .megamenu__item { }
-.megamenu__list .megamenu__panel .megamenu__item .megamenu__item a { }
-
-
-.megamenu__handler {
-  display: none;
-}
 
 p {
   margin-top: 0;
@@ -170,6 +62,15 @@ p {
   font-weight: 200;
   overflow: scroll;
   -webkit-overflow-scrolling: touch; // enable intertia scrolling
+
+  @include breakpoint($breakpoint, min-width) {
+    left: 0;
+    position: relative;
+    margin-left: 0;
+    padding-left: 0;
+    overflow: visible;
+    box-shadow: $shadow--top;
+  }
 }
 
 .megamenu a {
@@ -177,14 +78,17 @@ p {
   text-decoration: none;
   line-height: $height--touch-target;
   display: block;
+
+  @include breakpoint($breakpoint, min-width) {
+    @include font-size($size--h4, 1.4);
+    padding: 0 $gutter--narrow;
+  }
 }
 
-.megamenu p {
-  @include font-size($size--h5);
-}
 
 .megamenu p {
   margin: 0;
+  @include font-size($size--h5);
 }
 
 .megamenu h2,
@@ -205,206 +109,18 @@ p {
   border-top: 1px solid $color--medium;
 }
 
-
-
-
 .megamenu__list,
 .megamenu__group {
   @extend %list-style-none;
 }
 
 .megamenu__list .megamenu__item,
-.megamenu__grou .megamenu__item {
-  padding: 0 $gutter--narrow;
-}
-
-.megamenu__label {
-  @include image-replacement;
-  position: fixed;
-  z-index: 100;
-  display: block;
-  width: $width--touch-target;
-  height: $height--touch-target;
-  background-color: $color--dark;
-  box-shadow: $shadow--top-left;
-  text-align: center;
-  cursor: pointer;
-  user-select: none;
-
-  .lines,
-  .lines:before,
-  .lines:after {
-    display: inline-block;
-    width: 100%;
-    height: 3px;
-    background-color: $color--light;
-  }
-
-  .lines {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    width: 50%;
-    transition: background 0;
-
-    &:before,
-    &:after {
-      position: absolute;
-      right: 0;
-      left: 0;
-      content: '';
-      transition: top 0, transform 0;
-      transform-origin: 50% 50%;
-    }
-
-    &:before { top: -6px; }
-
-    &:after { top:   6px; }
-  }
-}
-
-// open menu state
-.megamenu__handler:checked {
-
-  & ~ .megamenu { left: 0; }
-
-  & ~ .megamenu__label {
-    position: fixed;
-    top: 0;
-    left: 100%;
-    margin-left: -$width--touch-target;
-  }
-
-  & ~ .megamenu__label .lines {
-    //hide the middle line
-    background: transparent;
-
-    //overlay the lines by setting both their top values to 0
-    &:before,
-    &:after{
-      top: 0;
-    }
-
-    // rotate the lines to form the x shape
-    &:before{ transform: rotate3d(0,0,1,45deg); }
-
-    &:after{ transform: rotate3d(0,0,1,-45deg); }
-  }
-}
-
-@include breakpoint($breakpoint, max-width) {
-  .disable-scroll {
-    position: fixed;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-@include breakpoint($breakpoint + 1, min-width) {
-
-.megamenu__label {
-  display: none;
-}
-
-.megamenu {
-  left: 0;
-  position: relative;
-  margin-left: 0;
-  padding-left: 0;
-  overflow: visible;
-  box-shadow: $shadow--top;
-}
-
-.megamenu a {
-  @include font-size($size--h4, 1.4);
-  padding: 0 $gutter--narrow;
-}
-
-
-// Flexbox Implementation
-// ----------------------
-
-.megamenu > .megamenu__list {
-  display: flex;
-}
-
-.megamenu > .megamenu__list > .megamenu__item {
-  flex-grow: 1;
-  text-align: center;
-}
-
-.megamenu__panel {
-  position: absolute;
-  left: -999em;
-  background-color: $color--medium;
-  text-align: left;
-  display: block;
-  width: 100%;
-  padding: $gutter;
-  overflow: hidden;
-  top: 100%;
-  box-shadow: $shadow--top;
-}
-
-.megamenu__group {
-  display: block;
-  list-style: none;
-  padding: 0;
-  margin-top: $gutter--narrow;
-
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  flex-flow: row wrap;
-}
-
 .megamenu__group .megamenu__item {
-  padding: 0; // $gutter--skinny;
-  box-sizing: 0;
-  margin: 0 $gutter--skinny;
-
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 200px;
-  align-self: stretch;
-}
-
-.megamenu__group .megamenu__group {
-  display: block;
-}
-
-.megamenu__group .megamenu__group .megamenu__item {
-  display: block;
-  width: 100%;
-
-}
-
-.megamenu__item {
-  &:hover,
-  &:focus,
-  &:active,
-  &.has-focus {
-    .megamenu__panel {
-      left: 0;
-    }
-  }
+  padding: 0 $gutter--narrow;
 }
 
 
 
-
-
-// end breakpoint
-}
-
-
+@import "megamenu__external-elements";
+@import "megamenu__actions";
+@import "megamenu__flexbox";

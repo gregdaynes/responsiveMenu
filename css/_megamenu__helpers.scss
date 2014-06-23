@@ -1,0 +1,5 @@
+.disable-scroll {
+  @include breakpoint($breakpoint, max-width) {
+    position: fixed;
+  }
+}
