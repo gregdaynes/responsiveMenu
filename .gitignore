@@ -3,5 +3,5 @@ node_modules
 *.sketch*
 /.tmp/*
 /dev/*
-.css
-.map
+*.css
+*.map
